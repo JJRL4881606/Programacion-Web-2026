@@ -1,15 +1,31 @@
-# PROGRAMACIÓN WEB 2026
+# Programación Web 2026
 
-### Este repositorio es para subir los trabajos, ejercicios, proyectos etc. de esta asignatura
+Repositorio académico correspondiente a la asignatura **Programación Web**, utilizado para almacenar y organizar las actividades realizadas durante el **5.º semestre**.
 
-## DATOS:
+## Datos del alumno
 
-* **Alumno**: Josué Eleazar Burgos Urías
-* **Universidad**: UABCS
-* **Carrera**: Ingeniería en Desarrollo de Software
-* **Semestre**: 5to semestre
+* **Alumno:** Josué Eleazar Burgos Urías
+* **Universidad:** UABCS
+* **Carrera:** Ingeniería en Desarrollo de Software
+* **Semestre:** 5.º semestre
 
-## ORGANIZACIÓN
+## Contenido del repositorio
 
-* Está organizado en carpetas por ejercicio, proyecto etc.
-* Incluye el nombre y la fecha de cada uno
+En este repositorio se almacenan las actividades realizadas durante la asignatura, incluyendo:
+
+* Ejercicios
+* Tareas
+* Prácticas
+* Trabajos
+* Proyectos
+
+## Organización
+
+El contenido del repositorio se organiza mediante **carpetas**, de acuerdo con cada ejercicio, trabajo, práctica o proyecto.
+
+Cada actividad incluye información que permite identificarla fácilmente, como:
+
+* **Nombre de la actividad**
+* **Fecha de realización**
+
+De esta manera, el repositorio permite mantener un registro ordenado de las actividades desarrolladas a lo largo del curso.
