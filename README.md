@@ -8,7 +8,7 @@ En este repositorio se almacenarán y organizarán los **ejercicios, prácticas,
 
 ## Datos del alumno
 
-- **Alumno:** Josué Eleazar Burgos Urías
+- **Alumnos:** Josué Eleazar Burgos Urías, Marcos Uriel Castro Perales
 - **Universidad:** UABCS
 - **Carrera:** Ingeniería en Desarrollo de Software
 - **Materia:** Programación Web
