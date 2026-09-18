@@ -4,29 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/webp" href="/assets/icons/favicon.webp">
+    <link rel="icon" type="image/webp" href="../assets/icons/favicon.webp">
     <title>Perfil - GameZone</title>
 </head>
 
 <body>
     <header>
-        <img src="/assets/img/logo.webp" alt="" width="320" height="80">
+        <img src="../assets/img/logo.webp" alt="" width="320" height="80">
 
-        <nav>
+        <nav aria-label="Cuenta y compras">
             <ul>
-                <li><a href="/pages/categories.html"><img src="/assets/icons/icon-categories.webp" alt="" width="20" height="20"> Categorías</a></li>
-                <li><a href="/pages/sales.html"><img src="/assets/icons/icon-sales.webp" alt="" width="20" height="20"> Ofertas</a></li>
+                <li><a href="../pages/cart.html"><img src="../assets/icons/icon-cart.webp" alt="" width="20" height="20"> Carrito</a></li>
+                <li><a href="../pages/profile.html"><img src="../assets/icons/icon-profile.webp" alt="" width="20" height="20"> Perfil</a></li>
             </ul>
         </nav>
 
-        <img src="/assets/icons/icon-search.webp" alt="" width="18" height="18">
-        <label for="buscar">Buscar videojuegos</label>
-        <input type="search" id="buscar" name="buscar" placeholder="Buscar videojuegos">
-        <nav>
+        <div role="search">
+            <img src="../assets/icons/icon-search.webp" alt="" width="18" height="18">
+            <label for="buscar">Buscar videojuegos</label>
+            <input type="search" id="buscar" name="buscar" placeholder="Buscar videojuegos">
+        </div>
+
+        <nav aria-label="Categorías y ofertas">
             <ul>
-                <li><a href="/index.html"><img src="/assets/icons/icon-catalog.webp" alt="" width="20" height="20"> Catálogo</a></li>
-                <li><a href="/pages/cart.html"><img src="/assets/icons/icon-cart.webp" alt="" width="20" height="20"> Carrito</a></li>
-                <li><a href="/pages/profile.html"><img src="/assets/icons/icon-profile.webp" alt="" width="20" height="20"> Perfil</a></li>
+                <li><a href="../index.html"><img src="../assets/icons/icon-home.webp" alt="" width="20" height="20"> Inicio</a></li>
+                <li><a href="../pages/categories.html"><img src="../assets/icons/icon-categories.webp" alt="" width="20" height="20"> Categorías</a></li>
+                <li><a href="../pages/sales.html"><img src="../assets/icons/icon-sales.webp" alt="" width="20" height="20"> Ofertas</a></li>
             </ul>
         </nav>
 
@@ -36,12 +39,19 @@
         <h1>Perfil</h1>
 
         <section>
+            <h2>Sesión</h2>
+            <button type="button">Cerrar sesión</button>
+            <p>¿No tienes cuenta? <a href="../pages/register.html">Regístrate aquí</a>.</p>
+        </section>
+
+        <section>
             <h2>Datos de la cuenta</h2>
 
-            <img src="/assets/img/avatar-default.webp" alt="Foto de perfil" width="100" height="100">
+            <img src="../assets/img/avatar-default.webp" alt="Foto de perfil" width="100" height="100">
 
             <p>Nombre: <strong>Alguien sin nombre</strong></p>
             <p>Correo electrónico: <strong>alguien.sin.nombre@gmail.com</strong></p>
+            <p>Contraseña: </p>
 
             <button type="button">Editar perfil</button>
         </section>
@@ -50,21 +60,16 @@
             <h2>Historial de compras</h2>
 
             <div>
-                <img src="/assets/img/minecraft-2.jpg" alt="Minecraft" width="100" height="100">
+                <img src="../assets/img/minecraft-2.jpg" alt="Minecraft" width="100" height="100">
                 <h3>Minecraft</h3>
                 <p><strong>$800.00</strong></p>
             </div>
 
             <div>
-                <img src="/assets/img/cyberpunk-2077.jpg" alt="Cyberpunk 2077" width="100" height="100">
+                <img src="../assets/img/cyberpunk-2077.jpg" alt="Cyberpunk 2077" width="100" height="100">
                 <h3>Cyberpunk 2077</h3>
                 <p><strong>$1300.00</strong></p>
             </div>
-        </section>
-
-        <section>
-            <h2>Sesión</h2>
-            <button type="button">Cerrar sesión</button>
         </section>
     </main>
 

@@ -4,41 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/webp" href="/assets/icons/favicon.webp">
+    <link rel="icon" type="image/webp" href="../assets/icons/favicon.webp">
     <title>Minecraft - GameZone</title>
 </head>
 
 <body>
     <header>
-        <img src="/assets/img/logo.webp" alt="" width="320" height="80">
+        <img src="../assets/img/logo.webp" alt="" width="320" height="80">
 
-        <nav>
+        <nav aria-label="Cuenta y compras">
             <ul>
-                <li><a href="/pages/categories.html"><img src="/assets/icons/icon-categories.webp" alt="" width="20" height="20"> Categorías</a></li>
-                <li><a href="/pages/sales.html"><img src="/assets/icons/icon-sales.webp" alt="" width="20" height="20"> Ofertas</a></li>
+                <li><a href="../pages/cart.html"><img src="../assets/icons/icon-cart.webp" alt="" width="20" height="20"> Carrito</a></li>
+                <li><a href="../pages/profile.html"><img src="../assets/icons/icon-profile.webp" alt="" width="20" height="20"> Perfil</a></li>
             </ul>
         </nav>
 
-        <img src="/assets/icons/icon-search.webp" alt="" width="18" height="18">
-        <label for="buscar">Buscar videojuegos</label>
-        <input type="search" id="buscar" name="buscar" placeholder="Buscar videojuegos">
-        <nav>
+        <div role="search">
+            <img src="../assets/icons/icon-search.webp" alt="" width="18" height="18">
+            <label for="buscar">Buscar videojuegos</label>
+            <input type="search" id="buscar" name="buscar" placeholder="Buscar videojuegos">
+        </div>
+
+        <nav aria-label="Categorías y ofertas">
             <ul>
-                <li><a href="/index.html"><img src="/assets/icons/icon-catalog.webp" alt="" width="20" height="20"> Catálogo</a></li>
-                <li><a href="/pages/cart.html"><img src="/assets/icons/icon-cart.webp" alt="" width="20" height="20"> Carrito</a></li>
-                <li><a href="/pages/profile.html"><img src="/assets/icons/icon-profile.webp" alt="" width="20" height="20"> Perfil</a></li>
+                <li><a href="../index.html"><img src="../assets/icons/icon-home.webp" alt="" width="20" height="20"> Inicio</a></li>
+                <li><a href="../pages/categories.html"><img src="../assets/icons/icon-categories.webp" alt="" width="20" height="20"> Categorías</a></li>
+                <li><a href="../pages/sales.html"><img src="../assets/icons/icon-sales.webp" alt="" width="20" height="20"> Ofertas</a></li>
             </ul>
         </nav>
 
     </header>
 
     <main>
-        <p><a href="/index.html">← Volver al catálogo</a></p>
+        <p><a href="../index.html">← Volver al catálogo</a></p>
 
         <section>
             <h1>Minecraft</h1>
 
-            <img src="/assets/img/minecraft.jpg" alt="Portada de Minecraft" width="400" height="200">
+            <img src="../assets/img/minecraft.jpg" alt="Portada de Minecraft" width="400" height="200">
 
             <p><strong>$800.00</strong></p>
 
@@ -53,18 +56,18 @@
         <section>
             <h2>Capturas de pantalla</h2>
 
-            <img src="/assets/img/minecraftS1.jpg" alt="" width="200" height="100">
-            <img src="/assets/img/minecraftS2.jpg" alt="" width="200" height="100">
-            <img src="/assets/img/minecraftS3.jpg" alt="" width="200" height="100">
-            <img src="/assets/img/minecraftS4.jpg" alt="" width="200" height="100">
+            <img src="../assets/img/minecraftS1.jpg" alt="Personaje construyendo una estructura" width="200" height="100">
+            <img src="../assets/img/minecraftS2.jpg" alt="Exploración de un bioma boscoso" width="200" height="100">
+            <img src="../assets/img/minecraftS3.jpg" alt="Vista de un lago junto a montañas" width="200" height="100">
+            <img src="../assets/img/minecraftS4.jpg" alt="Personaje junto a animales de granja" width="200" height="100">
         </section>
 
         <section>
             <h2>Categorías</h2>
             <ul>
-                <li><a href="#">Casual</a></li>
-                <li><a href="#">Construcción</a></li>
-                <li><a href="#">Exploración</a></li>
+                <li><a href="../pages/categories.html"> Casual</a></li>
+                <li><a href="../pages/categories.html"> Construcción</a></li>
+                <li><a href="../pages/categories.html"> Exploración</a></li>
             </ul>
         </section>
 

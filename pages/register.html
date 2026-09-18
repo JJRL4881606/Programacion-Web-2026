@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/webp" href="../assets/icons/favicon.webp">
+    <title>Registro - GameZone</title>
+</head>
+
+<body>
+    <header>
+        <img src="../assets/img/logo.webp" alt="" width="320" height="80">
+
+        <nav aria-label="Cuenta y compras">
+            <ul>
+                <li><a href="../pages/cart.html"><img src="../assets/icons/icon-cart.webp" alt="" width="20" height="20"> Carrito</a></li>
+                <li><a href="../pages/profile.html"><img src="../assets/icons/icon-profile.webp" alt="" width="20" height="20"> Perfil</a></li>
+            </ul>
+        </nav>
+
+        <div role="search">
+            <img src="../assets/icons/icon-search.webp" alt="" width="18" height="18">
+            <label for="buscar">Buscar videojuegos</label>
+            <input type="search" id="buscar" name="buscar" placeholder="Buscar videojuegos">
+        </div>
+
+        <nav aria-label="Categorías y ofertas">
+            <ul>
+                <li><a href="../index.html"><img src="../assets/icons/icon-home.webp" alt="" width="20" height="20"> Inicio</a></li>
+                <li><a href="../pages/categories.html"><img src="../assets/icons/icon-categories.webp" alt="" width="20" height="20"> Categorías</a></li>
+                <li><a href="../pages/sales.html"><img src="../assets/icons/icon-sales.webp" alt="" width="20" height="20"> Ofertas</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+        <h1>Crear una cuenta</h1>
+
+        <p>Los campos marcados con <strong aria-hidden="true">*</strong> son obligatorios.</p>
+
+        <form action="#" method="post">
+            <fieldset>
+                <legend>Datos personales</legend>
+
+                <p>
+                    <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label><br>
+                    <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+                </p>
+
+                <p>
+                    <label for="correo">Correo electrónico <span aria-hidden="true">*</span></label><br>
+                    <input type="email" id="correo" name="correo" autocomplete="email" required>
+                </p>
+
+                <p>
+                    <label for="nacimiento">Fecha de nacimiento <span aria-hidden="true">*</span></label><br>
+                    <input type="date" id="nacimiento" name="nacimiento" autocomplete="bday" required>
+                </p>
+
+                <p>
+                    <label for="pais">País</label><br>
+                    <select id="pais" name="pais" autocomplete="country">
+                        <option value="">Selecciona un país</option>
+                        <option value="MX">México</option>
+                        <option value="US">Estados Unidos</option>
+                        <option value="CO">Colombia</option>
+                        <option value="AR">Argentina</option>
+                        <option value="ES">España</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Seguridad de la cuenta</legend>
+
+                <p>
+                    <label for="password">Contraseña <span aria-hidden="true">*</span></label><br>
+                    <input type="password" id="password" name="password" autocomplete="new-password" minlength="8" required aria-describedby="password-ayuda">
+                    <br><small id="password-ayuda">Debe tener al menos 8 caracteres.</small>
+                </p>
+
+                <p>
+                    <label for="password-confirmar">Confirmar contraseña <span aria-hidden="true">*</span></label><br>
+                    <input type="password" id="password-confirmar" name="password-confirmar" autocomplete="new-password" minlength="8" required>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Preferencias</legend>
+
+                <p>
+                    <label for="plataforma">Plataforma favorita</label><br>
+                    <input type="text" id="plataforma" name="plataforma" list="lista-plataformas" autocomplete="off">
+                    <datalist id="lista-plataformas">
+                        <option value="PC"></option>
+                        <option value="PlayStation"></option>
+                        <option value="Xbox"></option>
+                        <option value="Nintendo Switch"></option>
+                        <option value="Móvil"></option>
+                    </datalist>
+                </p>
+            </fieldset>
+
+            <p>
+                <input type="checkbox" id="terminos" name="terminos" required>
+                <label for="terminos">Acepto los términos y condiciones <span aria-hidden="true">*</span></label>
+            </p>
+
+            <button type="submit">Crear cuenta</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>Versión <strong>1.0.0</strong></p>
+        <p>(C) 2026 GameZone. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>
