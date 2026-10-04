@@ -27,17 +27,25 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/styles.css">
-
-    <link class="link" rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
     <header>
-        <img src="assets/img/logo.webp" alt="" width="320" height="80">
-        <h1>Bienvenido a GameZone!</h1>
+        <h1 class="logo">
+            <a href="index.html">
+                <img src="assets/img/logo.webp" alt="GameZone" width="320" height="80">
+            </a>
+        </h1>
+
+        <form role="search" action="#">
+            <input type="search" id="buscar" name="buscar" placeholder="Buscar juegos" aria-label="Buscar juegos">
+            <button type="submit" aria-label="Buscar">
+                <img src="assets/icons/icon-search.webp" alt="" width="20" height="20">
+            </button>
+        </form>
 
         <nav aria-label="Cuenta y compras">
             <a href="pages/cart.html">
@@ -51,102 +59,99 @@
             </a>
         </nav>
 
-        <div role="search">
-            <img src="assets/icons/icon-search.webp" alt="" width="18" height="18">
-            <label for="buscar">Buscar videojuegos</label>
-            <input type="search" id="buscar" name="buscar" placeholder="Buscar videojuegos">
-        </div>
+        <nav aria-label="Categorías y ofertas">
+            <a href="index.html">
+                <img src="assets/icons/icon-home.webp" alt="" width="20" height="20">
+                Inicio
+            </a>
 
-    <nav aria-label="Categorías y ofertas">
-        <a href="index.html">
-            <img src="assets/icons/icon-home.webp" alt="" width="20" height="20">
-            Inicio
-        </a>
+            <a href="pages/categories.html">
+                <img src="assets/icons/icon-categories.webp" alt="" width="20" height="20">
+                Categorías
+            </a>
 
-        <a href="pages/categories.html">
-            <img src="assets/icons/icon-categories.webp" alt="" width="20" height="20">
-            Categorías
-        </a>
-
-        <a href="pages/sales.html">
-            <img src="assets/icons/icon-sales.webp" alt="" width="20" height="20">
-            Ofertas
-        </a>
-    </nav>
-
+            <a href="pages/sales.html">
+                <img src="assets/icons/icon-sales.webp" alt="" width="20" height="20">
+                Ofertas
+            </a>
+        </nav>
     </header>
 
     <main>
         <section>
-            <h2>Minecraft</h2>
+            <article class="juego-principal">
 
-            <div class="juego-principal">
-                <img src="assets/img/minecraft.jpg" alt="Minecraft-IMG-Principal" width="600" height="300">
+                <div class="destacado">
+                    <img src="assets/img/minecraft.jpg" alt="Minecraft-IMG-Principal" width="500" height="250">
 
-                <div class="info-juego">
-                    <p class="precio"><strong>$800.00</strong></p>
-                    <a href="pages/game.html" aria-label="Ver detalles de Minecraft">Ver detalles</a>
+                    <div class="destacado-texto">
+                        <h2>Minecraft</h2>
+
+                        <div class="info-juego">
+                            <p class="precio"><strong>$800.00</strong></p>
+                            <a href="pages/game.html" aria-label="Ver detalles de Minecraft">Ver detalles</a>
+                        </div>
+
+                        <ul class="etiquetas">
+                            <li><a href="pages/categories.html">Casual</a></li>
+                            <li><a href="pages/categories.html">Construcción</a></li>
+                            <li><a href="pages/categories.html">Exploración</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            
-            <ul>
-                <li><a href="pages/categories.html">Casual</a></li>
-                <li><a href="pages/categories.html">Construcción</a></li>
-                <li><a href="pages/categories.html">Exploración</a></li>
-            </ul>
 
-            <div>
-                <img src="assets/img/minecraftS1.jpg" alt="Minecraft-Imagen-Secundaria-1" width="300" height="150" loading="lazy">
-                <img src="assets/img/minecraftS2.jpg" alt="Minecraft-Imagen-Secundaria-2" width="300" height="150" loading="lazy">
-                <img src="assets/img/minecraftS3.jpg" alt="Minecraft-Imagen-Secundaria-3" width="300" height="150" loading="lazy">
-                <img src="assets/img/minecraftS4.jpg" alt="Minecraft-Imagen-Secundaria-4" width="300" height="150" loading="lazy">
-            </div>
-           
-            <button type="button" aria-label="Anterior">←</button>
-            <button type="button" aria-label="Siguiente">→</button>
-
+                <div class="galeria">
+                    <img src="assets/img/minecraftS1.jpg" alt="Minecraft-Imagen-Secundaria-1" width="300" height="150" loading="lazy">
+                    <img src="assets/img/minecraftS2.jpg" alt="Minecraft-Imagen-Secundaria-2" width="300" height="150" loading="lazy">
+                    <img src="assets/img/minecraftS3.jpg" alt="Minecraft-Imagen-Secundaria-3" width="300" height="150" loading="lazy">
+                    <img src="assets/img/minecraftS4.jpg" alt="Minecraft-Imagen-Secundaria-4" width="300" height="150" loading="lazy">
+                </div>
+            </article>
         </section>
 
         <section>
-            <h2>Catálogo de videojuegos</h2>
+            <h2>Catálogo de juegos</h2>
 
-            <div class="juego">
-                <img src="assets/img/minecraft-2.jpg" alt="Minecraft" width="300" height="300" loading="lazy">
+            <div class="catalogo">
 
-                <div class="info-juego">
-                    <h3>Minecraft</h3>
-                    <p class="precio"><strong>$800.00</strong></p>
-                    <a href="pages/game.html" aria-label="Ver detalles de Minecraft">Ver detalles</a>
+                <div class="juego">
+                    <img src="assets/img/minecraft-2.jpg" alt="Minecraft" width="300" height="300" loading="lazy">
+
+                    <div class="info-juego">
+                        <h3>Minecraft</h3>
+                        <p class="precio"><strong>$800.00</strong></p>
+                        <a href="pages/game.html" aria-label="Ver detalles de Minecraft">Ver detalles</a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="juego">
-                <img src="assets/img/human-fall-flat.jpg" alt="Human Fall Flat" width="300" height="300" loading="lazy">
+                <div class="juego">
+                    <img src="assets/img/human-fall-flat.jpg" alt="Human Fall Flat" width="300" height="300" loading="lazy">
 
-                <div class="info-juego">
-                    <h3>Human Fall Flat</h3>
-                    <p class="precio"><strong>$200.00</strong></p>
-                    <a href="pages/game.html" aria-label="Ver detalles de Human Fall Flat">Ver detalles</a>
+                    <div class="info-juego">
+                        <h3>Human Fall Flat</h3>
+                        <p class="precio"><strong>$200.00</strong></p>
+                        <a href="pages/game.html" aria-label="Ver detalles de Human Fall Flat">Ver detalles</a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="juego">
-                <img src="assets/img/forza-horizon-6.jpg" alt="Forza Horizon 6" width="300" height="300" loading="lazy">
+                <div class="juego">
+                    <img src="assets/img/forza-horizon-6.jpg" alt="Forza Horizon 6" width="300" height="300" loading="lazy">
 
-                <div class="info-juego">
-                    <h3>Forza Horizon 6</h3>
-                    <p class="precio"><strong>$1800.00</strong></p>
-                    <a href="pages/game.html" aria-label="Ver detalles de Forza Horizon 6">Ver detalles</a>
+                    <div class="info-juego">
+                        <h3>Forza Horizon 6</h3>
+                        <p class="precio"><strong>$1800.00</strong></p>
+                        <a href="pages/game.html" aria-label="Ver detalles de Forza Horizon 6">Ver detalles</a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="juego">
-                <img src="assets/img/cyberpunk-2077.jpg" alt="Cyberpunk 2077" width="300" height="300" loading="lazy">
+                <div class="juego">
+                    <img src="assets/img/cyberpunk-2077.jpg" alt="Cyberpunk 2077" width="300" height="300" loading="lazy">
 
-                <div class="info-juego">
-                    <h3>Cyberpunk 2077</h3>
-                    <p class="precio"><strong>$1300.00</strong></p>
-                    <a href="pages/game.html" aria-label="Ver detalles de Cyberpunk 2077">Ver detalles</a>
+                    <div class="info-juego">
+                        <h3>Cyberpunk 2077</h3>
+                        <p class="precio"><strong>$1300.00</strong></p>
+                        <a href="pages/game.html" aria-label="Ver detalles de Cyberpunk 2077">Ver detalles</a>
+                    </div>
                 </div>
             </div>
         </section>
