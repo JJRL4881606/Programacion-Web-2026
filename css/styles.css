@@ -34,12 +34,17 @@ button, input, select {
 }
 
 .precio {
+    margin: 0;
     color: white;
     font-weight: bold;
     font-size: 1.25rem;
 }
 
-/* ENLACES */
+.precio--grande {
+    font-size: 2rem;
+}
+
+/* enlaces */
 a:link {
     color: white;
 }
@@ -56,7 +61,7 @@ a:active {
     color: white;
 }
 
-/* HEADER */
+/* header */
 header {
     background-color: var(--color-header);
     color: var(--color-texto);
@@ -73,7 +78,7 @@ header {
     align-items: center;
 }
 
-/* Logo (dentro del h1) */
+/* logo */
 .logo {
     grid-area: logo;
     margin: 0;
@@ -86,7 +91,7 @@ header {
     height: auto;
 }
 
-/* Buscador */
+/* barra de busqueda */
 header form {
     grid-area: buscar;
     display: flex;
@@ -119,7 +124,7 @@ header form button:hover {
     background-color: transparent;
 }
 
-/* Navegación */
+/* menu */
 header nav {
     display: flex;
     align-items: center;
@@ -151,7 +156,7 @@ header nav a:hover {
     border-color: var(--color-acento);
 }
 
-/* Pantallas pequeñas, el header se apila */
+/* header en pantallas chicas */
 @media (max-width: 50rem) {
     header {
         grid-template-columns: 1fr;
@@ -164,7 +169,7 @@ header nav a:hover {
     }
 }
 
-/* MAIN */
+/* main */
 main {
     flex: 1;
     margin: 1rem;
@@ -181,11 +186,16 @@ main section {
     max-width: 80rem;
 }
 
-/* ===== TARJETA DE JUEGO ===== */
+/* tarjetas de juegos */
 .catalogo {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
     gap: 1.5rem;
+}
+
+/* tarjetas chicas del historial */
+.catalogo--compacto {
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 14rem));
 }
 
 .juego {
@@ -213,22 +223,23 @@ main section {
     border-radius: 0.5rem;
 }
 
-.info-juego {
+.juego__info {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 0.625rem;
 }
 
-.info-juego h3 {
+.juego__info h3 {
     margin: 0;
 }
 
-.info-juego p {
+.juego__info p {
     margin: 0;
 }
 
-/* ===== TARJETA PRINCIPAL (juego destacado) ===== */
-.juego-principal {
+/* juego destacado */
+.destacado {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -239,64 +250,40 @@ main section {
     box-shadow: var(--sombra);
 }
 
-.juego-principal h2 {
-    margin: 0;
-}
-
-.destacado {
+.destacado__cuerpo {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 1.5rem;
 }
 
-.destacado img {
+.destacado__imagen {
     flex: 1 1 24rem;
     max-width: 100%;
     height: auto;
     border-radius: 0.5rem;
 }
 
-.destacado-texto {
+.destacado__texto {
     flex: 1 1 14rem;
     display: flex;
     flex-direction: column;
     gap: 1.75rem;
 }
 
-.destacado-texto h2 {
+.destacado__titulo {
+    margin: 0;
     font-size: 2.25rem;
 }
 
-.destacado .info-juego {
+.destacado__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
 }
 
-.destacado .precio {
-    font-size: 2rem;
-}
-
-/* ==== BOTON VER DETALLES ==== */
-.info-juego a:link,
-.info-juego a:visited {
-    display: inline-block;
-    align-self: flex-start;
-    padding: 0.625rem 1.25rem;
-    background-color: var(--color-acento);
-    color: #1a1a1a;
-    font-weight: bold;
-    text-decoration: none;
-    border: 0.125rem solid var(--color-acento);
-    border-radius: 0.5rem;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.4);
-}
-
-.info-juego a:hover {
-    background-color: transparent;
-    color: var(--color-acento);
-}
-
-/* ===== ETIQUETAS DE CATEGORIA ==== */
+/* etiquetas de categoria */
 .etiquetas {
     display: flex;
     flex-wrap: wrap;
@@ -321,7 +308,7 @@ main section {
     color: var(--color-acento);
 }
 
-/* ==== GALERIA DE MINIATURAS ==== */
+/* galeria */
 .galeria {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
@@ -344,7 +331,7 @@ main section {
     border-color: var(--color-acento);
 }
 
-/* ===== FOOTER ===== */
+/* footer */
 footer {
     padding: 1.25rem;
     background-color: var(--color-header);
@@ -356,7 +343,7 @@ footer p {
     margin: 0.25rem 0;
 }
 
-/* ===== TARJETA DE CATEGORIA ===== */
+/* tarjetas de categorias */
 .categorias {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
@@ -388,21 +375,22 @@ footer p {
     border-radius: 0.5rem;
 }
 
-.info-categoria {
+.categoria__info {
     display: flex;
     flex-direction: column;
-    gap: 0.625rem;
+    align-items: flex-start;
+    gap: 0.75rem;
 }
 
-.info-categoria h3 {
+.categoria__info h3 {
     margin: 0;
 }
 
-.info-categoria p {
+.categoria__info p {
     margin: 0;
 }
 
-/* ===== CARRITO ===== */
+/* carrito */
 .carrito {
     width: 90%;
     max-width: 80rem;
@@ -416,7 +404,7 @@ footer p {
     width: 100%;
 }
 
-.lista-carrito {
+.carrito__lista {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -441,17 +429,17 @@ footer p {
     border-radius: 0.5rem;
 }
 
-.info-producto {
+.producto__info {
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
 }
 
-.info-producto h3, .info-producto p {
+.producto__info h3, .producto__info p {
     margin: 0;
 }
 
-.acciones-producto {
+.producto__acciones {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -485,12 +473,12 @@ footer p {
         height: 5rem;
     }
 
-    .acciones-producto {
+    .producto__acciones {
         grid-column: 1 / -1;
     }
 }
 
-/* ===== TITULO DE PAGINA ===== */
+/* titulo de cada pagina */
 .titulo-pagina {
     width: 90%;
     max-width: 80rem;
@@ -498,7 +486,7 @@ footer p {
     font-size: 2rem;
 }
 
-/* ===== TARJETA GENERICA ===== */
+/* tarjeta normal  */
 .tarjeta {
     padding: 1.5rem;
     background-color: var(--color-tarjeta);
@@ -511,7 +499,7 @@ footer p {
     margin-top: 0;
 }
 
-/* ===== BOTONES===== */
+/* botones */
 .boton {
     padding: 0.625rem 1.25rem;
     background-color: var(--color-acento);
@@ -525,28 +513,33 @@ footer p {
     cursor: pointer;
 }
 
+/* :link y :visited para los botones que son enlaces */
+.boton:link,
+.boton:visited {
+    display: inline-block;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
 .boton:hover {
     background-color: transparent;
     color: var(--color-acento);
 }
 
-.boton-secundario {
+/* boton secundario */
+.boton--secundario {
     background-color: transparent;
     color: white;
     border-color: var(--color-borde);
     box-shadow: none;
 }
 
-.boton-secundario:hover {
+.boton--secundario:hover {
     color: #ff6b6b;
     border-color: #ff6b6b;
 }
 
-.info-juego .boton {
-    align-self: flex-start;
-}
-
-/* ===== CAMPO DE CANTIDAD ===== */
+/* cantidad */
 input[type="number"] {
     width: 5rem;
     padding: 0.5rem;
@@ -555,7 +548,7 @@ input[type="number"] {
     border-radius: 0.5rem;
 }
 
-/* ===== OFERTAS ===== */
+/* ofertas */
 .descuento {
     align-self: flex-start;
     padding: 0.25rem 0.75rem;
@@ -578,7 +571,7 @@ input[type="number"] {
     text-decoration: none;
 }
 
-/* ===== PERFIL ===== */
+/* perfil */
 .perfil {
     display: flex;
     flex-direction: column;
@@ -586,14 +579,14 @@ input[type="number"] {
     gap: 2rem;
 }
 
-.datos-cuenta {
+.perfil__cuenta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 1.5rem;
 }
 
-.avatar {
+.perfil__avatar {
     width: 7rem;
     height: 7rem;
     object-fit: cover;
@@ -601,15 +594,15 @@ input[type="number"] {
     border-radius: 50%;
 }
 
-.datos-texto p {
+.perfil__texto p {
     margin: 0 0 0.5rem;
 }
 
-.datos-texto .boton {
+.perfil__texto .boton {
     margin-top: 0.5rem;
 }
 
-/* ===== DETALLE DEL JUEGO ===== */
+/* pagina del juego */
 .detalle {
     display: flex;
     flex-wrap: wrap;
@@ -624,7 +617,7 @@ input[type="number"] {
     border-radius: 0.5rem;
 }
 
-.detalle-info {
+.detalle__info {
     flex: 1 1 14rem;
     display: flex;
     flex-direction: column;
@@ -632,12 +625,7 @@ input[type="number"] {
     gap: 1.5rem;
 }
 
-.detalle-info .precio {
-    margin: 0;
-    font-size: 2rem;
-}
-
-/* ===== FICHA TECNICA ===== */
+/* ficha tecnica */
 .ficha {
     margin: 0;
     padding: 0;
@@ -657,7 +645,7 @@ input[type="number"] {
     color: var(--color-acento);
 }
 
-/* ===== AVISO ===== */
+/* aviso */
 .aviso {
     margin: 0;
     padding: 0.75rem 1rem;
@@ -667,13 +655,13 @@ input[type="number"] {
     box-shadow: var(--sombra);
 }
 
-/* ===== REGISTRO ===== */
+/* registro  */
 .registro > * {
     width: 90%;
     max-width: 40rem;
 }
 
-/* ===== FORMULARIO ===== */
+/* formulario */
 .formulario {
     display: flex;
     flex-direction: column;
@@ -749,4 +737,49 @@ input[type="number"] {
 
 .formulario .boton {
     align-self: flex-start;
+}
+
+/* pseudoelementos */
+
+/* barra decorativa bajo el titulo de cada pagina */
+.titulo-pagina::after {
+    content: "";
+    display: block;
+    width: 4rem;
+    height: 0.25rem;
+    margin-top: 0.5rem;
+    background-color: var(--color-acento);
+    border-radius: 62.5rem;
+}
+
+/* las categorias se ven como hashtags */
+.etiquetas a::before {
+    content: "#";
+    margin-right: 0.25rem;
+    color: var(--color-acento);
+}
+
+/* color al seleccionar texto */
+::selection {
+    background-color: var(--color-acento);
+    color: #1a1a1a;
+}
+
+/* color del texto de ayuda del buscador */
+#buscar::placeholder {
+    color: #6b6b8f;
+}
+
+/* pseudoclases */
+
+/* resalta el elemento enfocado al moverse con el teclado */
+a:focus-visible,
+button:focus-visible {
+    outline: 0.1875rem solid var(--color-acento);
+    outline-offset: 0.25rem;
+}
+
+/* el texto del checkbox se pone verde al marcarlo */
+.formulario input[type="checkbox"]:checked + label {
+    color: var(--color-acento);
 }
