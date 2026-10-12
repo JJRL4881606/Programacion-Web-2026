@@ -9,10 +9,10 @@
     <meta name="author" content="Josué Eleazar Burgos Urías, Marcos Uriel Castro Perales">
     <meta name="keywords" content="html, proyecto, página web">
 
-    <meta property="og:title" content="Inicio - GameZone">
-    <meta property="og:description" content="Proyecto de programación web">
+    <meta property="og:title" content="Carrito - GameZone">
+    <meta property="og:description" content="Tienda online de videojuegos">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jjrl4881606.github.io/Programacion-Web-2026/index.html">
+    <meta property="og:url" content="https://jjrl4881606.github.io/Programacion-Web-2026/pages/cart.html">
     <meta property="og:image" content="https://jjrl4881606.github.io/Programacion-Web-2026/assets/img/logo.webp">
 
     <meta name="twitter:card" content="summary_large_image">
@@ -21,9 +21,9 @@
 
     <title>Carrito - GameZone</title>
 
-    <link rel="canonical" href="index.html">
+    <link rel="canonical" href="https://jjrl4881606.github.io/Programacion-Web-2026/pages/cart.html">
     <meta name="robots" content="index, follow">
-    <link rel="alternate" hreflang="es" href="index.html">
+    <link rel="alternate" hreflang="es" href="https://jjrl4881606.github.io/Programacion-Web-2026/pages/cart.html">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,7 +82,7 @@
 
         <div class="carrito">
             <section class="carrito__lista">
-                <div class="producto">
+                <article class="producto">
                     <img src="../assets/img/minecraft-2.jpg" alt="Minecraft" width="100" height="100">
 
                     <div class="producto__info">
@@ -95,9 +95,9 @@
                         <input type="number" id="cantidad-minecraft" name="cantidad-minecraft" value="1" min="1">
                         <button type="button" class="boton boton--secundario" aria-label="Eliminar Minecraft del carrito">Eliminar</button>
                     </div>
-                </div>
+                </article>
 
-                <div class="producto">
+                <article class="producto">
                     <img src="../assets/img/human-fall-flat.jpg" alt="Human Fall Flat" width="100" height="100">
 
                     <div class="producto__info">
@@ -110,13 +110,13 @@
                         <input type="number" id="cantidad-hff" name="cantidad-hff" value="1" min="1">
                         <button type="button" class="boton boton--secundario" aria-label="Eliminar Human Fall Flat del carrito">Eliminar</button>
                     </div>
-                </div>
+                </article>
             </section>
 
             <section class="tarjeta resumen">
                 <h2>Resumen de compra</h2>
                 <p>Subtotal: <strong class="precio">$1,000.00</strong></p>
-                <button type="button" class="boton">Proceder al pago</button>
+                <a class="boton" href="../pages/payment.html" aria-label="Proceder al pago">Proceder al pago</a>
             </section>
         </div>
     </main>
