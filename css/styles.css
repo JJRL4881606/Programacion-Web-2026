@@ -1,14 +1,59 @@
+/* ==========================================================
+   ÍNDICE
+   1. Variables y paletas (claro y oscuro)
+   2. Base (reset, body, tipografía, precios)
+   3. Enlaces
+   4. Header
+   5. Main
+   6. Catálogo y tarjetas de juego
+   7. Juego destacado, etiquetas y galería
+   8. Footer
+   9. Categorías
+   10. Carrito
+   11. Componentes generales (título, tarjeta, botones)
+   12. Ofertas
+   13. Perfil
+   14. Página del juego
+   15. Registro y formularios
+   16. Pseudoelementos y pseudoclases
+   17. Responsive (móvil, tablet, escritorio)
+   18. Header y footer siempre oscuros
+   19. Animaciones
+   20. Reduced motion
+   ========================================================== */
+
+/* 1. Variables y paletas (claro y oscuro) */
 :root {
-    --color-fondo: #070750;
+    color-scheme: light dark;
+
+    /* paleta clara */
+    --color-fondo: #d9ddff;
     --color-header: #08052c;
-    --color-texto: white;
+    --color-texto: #0a0a3d;
+    --color-texto-suave: #3f3f7a;
+    --color-tarjeta: #eceeff;
+    --color-borde: #6c71dd;
+    --color-acento: #0e7a1c;
+    --color-texto-acento: #ffffff;
+    --color-boton: #070750;
+    --color-boton-texto: #ffffff;
+    --color-peligro: #c62828;
+    --color-superficie: rgba(7, 7, 80, 0.08);
+    --color-campo: #ffffff;
+    --color-campo-texto: #0a0a3d;
+    --color-placeholder: #6b6b8f;
+    --sombra: 0 0.25rem 0.75rem rgba(7, 7, 80, 0.2);
+    --sombra-hover: 0 0.5rem 1.25rem rgba(7, 7, 80, 0.35);
+    --sombra-header: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.5);
+
+    --color-header-texto: white;
+    --color-header-acento: #45f818;
+    --color-header-borde: #171661;
+    --color-header-superficie: rgba(255, 255, 255, 0.08);   
+    
+    /* fuentes, espaciados, radios */
     --fuente-principal: "Roboto", Arial, sans-serif;
     --fuente-titulos: "Exo 2", Arial, sans-serif;
-    --color-tarjeta: #070750;
-    --color-borde: #171661;
-    --color-acento: #45f818;
-    --sombra: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.4);
-
     --espaciado-xs: 0.5rem;
     --espaciado-sm: 1rem;
     --espaciado-md: 1.5rem;
@@ -18,6 +63,31 @@
     --radio-boton: 0.5rem;
 }
 
+/* paleta oscura */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-fondo: #070750;
+        --color-header: #08052c;
+        --color-texto: white;
+        --color-texto-suave: #b8b8d9;
+        --color-tarjeta: #070750;
+        --color-borde: #171661;
+        --color-acento: #45f818;
+        --color-texto-acento: #1a1a1a;
+        --color-peligro: #ff6b6b;
+        --color-superficie: rgba(255, 255, 255, 0.08);
+        --color-campo: #0d0d3a;
+        --color-campo-texto: white;
+        --color-placeholder: #9a9ac0;
+        --sombra: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.4);
+        --sombra-hover: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.6);
+
+        --color-boton: #45f818;
+        --color-boton-texto: #1a1a1a;
+    }
+}
+
+/* 2. Base (reset, body, tipografía, precios) */
 img {
     max-width: 100%;
     height: auto;
@@ -52,40 +122,40 @@ button, input, select {
 
 .precio {
     margin: 0;
-    color: white;
+    color: var(--color-texto);
     font-weight: bold;
     font-size: 1.25rem;
 }
 
-.precio--grande {
+.precio--destacado {
     font-size: 2rem;
 }
 
-/* enlaces */
+/* 3. Enlaces */
 a:link {
-    color: white;
+    color: var(--color-texto);
 }
 
 a:visited {
-    color: white;
+    color: var(--color-texto);
 }
 
 a:hover {
-    color: #45f818;
+    color: var(--color-acento);
 }
 
 a:active {
-    color: white;
+    color: var(--color-texto);
 }
 
-/* header */
+/* 4. Header */
 /* header por defecto para móviles */
 header {
     background-color: var(--color-header);
-    color: var(--color-texto);
+    color: var(--color-header-texto); 
     padding: 1rem;
     border-bottom: 0.125rem solid var(--color-borde);
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.5);
+    box-shadow: var(--sombra-header);
 
     grid-area: header;
     display: flex;
@@ -122,20 +192,8 @@ header form {
     border: 0.125rem solid var(--color-borde);
     border-right: none;
     border-radius: 0.5rem 0 0 0.5rem;
-}
-
-header form button {
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
-    background-color: var(--color-acento);
-    border: 0.125rem solid var(--color-acento);
-    border-radius: 0 0.5rem 0.5rem 0;
-    cursor: pointer;
-}
-
-header form button:hover {
-    background-color: transparent;
+    background-color: var(--color-campo);
+    color: var(--color-campo-texto);
 }
 
 /* menu */
@@ -162,18 +220,21 @@ header nav a {
     align-items: center;
     gap: 0.375rem;
     padding: 0.5rem 0.875rem;
-    background-color: rgba(255, 255, 255, 0.08);
     border: 0.125rem solid var(--color-borde);
     border-radius: 0.5rem;
     text-decoration: none;
 }
 
-header nav a:hover {
-    color: var(--color-acento);
-    border-color: var(--color-acento);
+header form button {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    border: 0.125rem solid var(--color-header-acento);
+    border-radius: 0 0.5rem 0.5rem 0;
+    cursor: pointer;
 }
 
-/* main */
+/* 5. Main */
 main {
     grid-area: main;
     margin: 1rem;
@@ -190,16 +251,11 @@ main section {
     max-width: 80rem;
 }
 
-/* tarjetas de juegos */
+/* 6. Catálogo y tarjetas de juego */
 .catalogo {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--espaciado-md);
-}
-
-/* tarjetas chicas del historial */
-.catalogo--compacto .juego {
-    flex: 0 1 14rem;
 }
 
 .juego {
@@ -212,14 +268,15 @@ main section {
     border-radius: var(--radio-borde);
     box-shadow: var(--sombra);
     transition: transform 0.2s, box-shadow 0.2s;
+    animation: aparecer-tarjeta 0.8s ease-out;
 }
 
 .juego:hover {
     transform: translateY(-0.25rem);
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.6);
+    box-shadow: var(--sombra-hover);
 }
 
-.juego img {
+.juego__imagen {
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
@@ -242,7 +299,7 @@ main section {
     margin: 0;
 }
 
-/* juego destacado */
+/* 7. Juego destacado, etiquetas y galería */
 .destacado {
     display: flex;
     flex-direction: column;
@@ -301,15 +358,20 @@ main section {
     display: inline-block;
     padding: 0.375rem 0.875rem;
     background-color: var(--color-header);
-    border: 0.125rem solid var(--color-borde);
+    border: 0.125rem solid var(--color-header-borde);
     border-radius: 62.5rem;
     text-decoration: none;
     font-size: 0.875rem;
 }
 
+.etiquetas a:link,
+.etiquetas a:visited {
+    color: var(--color-header-texto);
+}
+
 .etiquetas a:hover {
-    border-color: var(--color-acento);
-    color: var(--color-acento);
+    border-color: var(--color-header-acento);
+    color: var(--color-header-acento);
 }
 
 /* galeria */
@@ -327,7 +389,7 @@ main section {
     object-fit: cover;
     border: 0.125rem solid var(--color-borde);
     border-radius: 0.5rem;
-    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.4);
+    box-shadow: var(--sombra);
     transition: transform 0.2s, border-color 0.2s;
 }
 
@@ -336,7 +398,7 @@ main section {
     border-color: var(--color-acento);
 }
 
-/* footer */
+/* 8. Footer */
 footer {
     grid-area: footer;
     padding: 1.25rem;
@@ -349,7 +411,7 @@ footer p {
     margin: 0.25rem 0;
 }
 
-/* tarjetas de categorias */
+/* 9. Categorías */
 .categorias {
     display: flex;
     flex-wrap: wrap;
@@ -371,10 +433,10 @@ footer p {
 
 .categoria:hover {
     transform: translateY(-0.25rem);
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.6);
+    box-shadow: var(--sombra-hover);
 }
 
-.categoria img {
+.categoria__imagen {
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
@@ -397,7 +459,7 @@ footer p {
     margin: 0;
 }
 
-/* carrito */
+/* 10. Carrito */
 .carrito {
     width: 90%;
     max-width: 80rem;
@@ -426,7 +488,7 @@ footer p {
     box-shadow: var(--sombra);
 }
 
-.producto img {
+.producto__imagen {
     width: 6rem;
     height: 6rem;
     object-fit: cover;
@@ -464,6 +526,7 @@ footer p {
     width: 100%;
 }
 
+/* 11. Componentes generales (título, tarjeta, botones) */
 /* titulo de cada pagina */
 .titulo-pagina {
     width: 90%;
@@ -488,14 +551,14 @@ footer p {
 /* botones */
 .boton {
     padding: 0.625rem 1.25rem;
-    background-color: var(--color-acento);
-    color: #1a1a1a;
+    background-color: var(--color-boton);
+    color: var(--color-boton-texto);
     font-family: inherit;
     font-size: 1rem;
     font-weight: bold;
-    border: 0.125rem solid var(--color-acento);
+    border: 0.125rem solid var(--color-boton);
     border-radius: 0.5rem;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.4);
+    box-shadow: var(--sombra);
     cursor: pointer;
 }
 
@@ -503,26 +566,26 @@ footer p {
 .boton:link,
 .boton:visited {
     display: inline-block;
-    color: #1a1a1a;
+    color: var(--color-boton-texto);
     text-decoration: none;
 }
 
 .boton:hover {
     background-color: transparent;
-    color: var(--color-acento);
+    color: var(--color-boton);
 }
 
 /* boton secundario */
 .boton--secundario {
     background-color: transparent;
-    color: white;
+    color: var(--color-texto);
     border-color: var(--color-borde);
     box-shadow: none;
 }
 
 .boton--secundario:hover {
-    color: #ff6b6b;
-    border-color: #ff6b6b;
+    color: var(--color-peligro);
+    border-color: var(--color-peligro);
 }
 
 /* cantidad */
@@ -532,21 +595,23 @@ input[type="number"] {
     font-size: 1rem;
     border: 0.125rem solid var(--color-borde);
     border-radius: 0.5rem;
+    background-color: var(--color-campo);
+    color: var(--color-campo-texto);
 }
 
-/* ofertas */
+/* 12. Ofertas */
 .descuento {
     align-self: flex-start;
     padding: 0.25rem 0.75rem;
     background-color: var(--color-acento);
-    color: #1a1a1a;
+    color: var(--color-texto-acento);
     font-size: 0.875rem;
     font-weight: bold;
     border-radius: 62.5rem;
 }
 
 .precio-oferta del {
-    color: #b8b8d9;
+    color: var(--color-texto-suave);
 }
 
 .precio-oferta ins {
@@ -557,7 +622,7 @@ input[type="number"] {
     text-decoration: none;
 }
 
-/* perfil */
+/* 13. Perfil */
 .perfil {
     display: flex;
     flex-direction: column;
@@ -580,15 +645,18 @@ input[type="number"] {
     border-radius: 50%;
 }
 
+.perfil__texto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
 .perfil__texto p {
-    margin: 0 0 0.5rem;
+    margin: 0;
 }
 
-.perfil__texto .boton {
-    margin-top: 0.5rem;
-}
-
-/* pagina del juego */
+/* 14. Página del juego */
 .detalle {
     display: flex;
     flex-wrap: wrap;
@@ -635,13 +703,13 @@ input[type="number"] {
 .aviso {
     margin: 0;
     padding: 0.75rem 1rem;
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: var(--color-superficie);
     border-left: 0.25rem solid var(--color-acento);
     border-radius: 0.5rem;
     box-shadow: var(--sombra);
 }
 
-/* registro  */
+/* 15. Registro y formularios */
 .registro > * {
     width: 90%;
     max-width: 40rem;
@@ -654,26 +722,24 @@ input[type="number"] {
     gap: 1.5rem;
 }
 
-.formulario fieldset {
-    margin: 0;
-    padding: 1.25rem;
-    border: 0.125rem solid var(--color-borde);
-    border-radius: 0.75rem;
-}
-
 .formulario legend {
     padding: 0 0.5rem;
     font-weight: bold;
     color: var(--color-acento);
 }
 
-.formulario p {
-    margin: 0 0 1rem;
+.formulario fieldset {
+    margin: 0;
+    padding: 1.25rem;
+    border: 0.125rem solid var(--color-borde);
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.formulario > p,
-.formulario fieldset p:last-child {
-    margin-bottom: 0;
+.formulario p {
+    margin: 0;
 }
 
 .formulario br {
@@ -696,6 +762,8 @@ input[type="number"] {
     font-size: 1rem;
     border: 0.125rem solid var(--color-borde);
     border-radius: 0.5rem;
+    background-color: var(--color-campo);
+    color: var(--color-campo-texto);
 }
 
 .formulario input:focus,
@@ -707,7 +775,7 @@ input[type="number"] {
 .formulario small {
     display: block;
     margin-top: 0.375rem;
-    color: #b8b8d9;
+    color: var(--color-texto-suave);
 }
 
 .formulario input[type="checkbox"] {
@@ -725,7 +793,7 @@ input[type="number"] {
     align-self: flex-start;
 }
 
-/* pseudoelementos */
+/* 16. Pseudoelementos y pseudoclases */
 
 /* barra decorativa bajo el titulo de cada pagina */
 .titulo-pagina::after {
@@ -742,18 +810,18 @@ input[type="number"] {
 .etiquetas a::before {
     content: "#";
     margin-right: 0.25rem;
-    color: var(--color-acento);
+    color: var(--color-header-acento);
 }
 
 /* color al seleccionar texto */
 ::selection {
     background-color: var(--color-acento);
-    color: #1a1a1a;
+    color: var(--color-texto-acento);
 }
 
 /* color del texto de ayuda del buscador */
 #buscar::placeholder {
-    color: #6b6b8f;
+    color: var(--color-placeholder);
 }
 
 /* pseudoclases */
@@ -770,9 +838,8 @@ button:focus-visible {
     color: var(--color-acento);
 }
 
-/*
-Responsive para mobil
-*/
+/* 17. Responsive (móvil, tablet, escritorio) */
+/* Responsive para movil */
 @media (min-width: 480px) {
     .logo img {
         width: 12rem;
@@ -784,9 +851,7 @@ Responsive para mobil
     }
 }
 
-/*
-Responsive para tablet
-*/
+/* Responsive para tablet */
 @media (min-width: 820px) {
     header {
         display: grid;
@@ -833,9 +898,7 @@ Responsive para tablet
     }
 }
 
-/*
-Responsive para escritorio
-*/
+/* Responsive para escritorio */
 @media (min-width: 1200px) {
     main {
         margin: 1.5rem auto;
@@ -852,5 +915,68 @@ Responsive para escritorio
 
     .galeria {
         grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* 18. Header y footer siempre oscuros */
+header a:link,
+header a:visited,
+header a:active {
+    color: var(--color-header-texto);
+}
+
+header nav a {
+    background-color: var(--color-header-superficie);
+    border-color: var(--color-header-borde);
+}
+
+header nav a:hover {
+    color: var(--color-header-acento);
+    border-color: var(--color-header-acento);
+}
+
+header form button {
+    background-color: var(--color-header-acento);
+    border-color: var(--color-header-acento);
+}
+
+header form button:hover {
+    background-color: transparent;
+}
+
+header a:focus-visible,
+header button:focus-visible {
+    outline-color: var(--color-header-acento);
+}
+
+footer {
+    color: var(--color-header-texto);
+    border-top-color: var(--color-header-borde);
+}
+
+/* 19. Animaciones */
+@keyframes aparecer-tarjeta {
+    0% {
+        opacity: 0;
+        transform: translateY(2rem) scale(0.95);
+    }
+    50% {
+        opacity: 0.6;
+        transform: translateY(-0.5rem) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 20. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
