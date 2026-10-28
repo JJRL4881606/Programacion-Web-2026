@@ -172,7 +172,7 @@ header {
 
 .logo img {
     display: block;
-    width: 10rem; /* Más pequeño para móviles */
+    width: max(9rem, 22vw); /* Más pequeño para móviles */
     max-width: 100%;
     height: auto;
 }
@@ -182,6 +182,14 @@ header form {
     display: flex;
     width: 100%;
     max-width: 32rem;
+}
+
+header form button img {
+    transition: transform 0.25s ease;
+}
+
+header form button:hover img {
+    transform: rotate(20deg);
 }
 
 #buscar {
@@ -247,8 +255,7 @@ main {
 }
 
 main section {
-    width: 90%;
-    max-width: 80rem;
+    width: min(80rem, 90%);
 }
 
 /* 6. Catálogo y tarjetas de juego */
@@ -256,24 +263,23 @@ main section {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--espaciado-md);
-}
 
-.juego {
-    display: flex;
-    flex-direction: column;
-    gap: var(--espaciado-sm);
-    padding: var(--espaciado-sm);
-    background-color: var(--color-tarjeta);
-    border: 0.125rem solid var(--color-borde);
-    border-radius: var(--radio-borde);
-    box-shadow: var(--sombra);
-    transition: transform 0.2s, box-shadow 0.2s;
-    animation: aparecer-tarjeta 0.8s ease-out;
-}
+    .juego {
+        display: flex;
+        flex-direction: column;
+        gap: var(--espaciado-sm);
+        padding: var(--espaciado-sm);
+        background-color: var(--color-tarjeta);
+        border: 0.125rem solid var(--color-borde);
+        border-radius: var(--radio-borde);
+        box-shadow: var(--sombra);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
 
-.juego:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: var(--sombra-hover);
+        &:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.6);
+        }
+    }
 }
 
 .juego__imagen {
@@ -304,37 +310,42 @@ main section {
     display: flex;
     flex-direction: column;
     gap: var(--espaciado-md);
-    padding: var(--espaciado-md);
+    padding: calc(var(--espaciado-md) - 4px);
     background-color: var(--color-tarjeta);
     border: 0.125rem solid var(--color-borde);
     border-radius: var(--radio-borde);
     box-shadow: var(--sombra);
-}
 
-.destacado__cuerpo {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--espaciado-md);
-}
+    .destacado__cuerpo {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--espaciado-md);
 
-.destacado__imagen {
-    flex: 1 1 24rem;
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
-}
+        .destacado__imagen {
+            flex: 1 1 24rem;
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+        }
 
-.destacado__texto {
-    flex: 1 1 14rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
+        .destacado__texto {
+            flex: 1 1 14rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+    }
 }
 
 .destacado__titulo {
     margin: 0;
-    font-size: 2.25rem;
+    font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+}
+
+h2 {
+    font-size: clamp(1.35rem, 1rem + 1.2vw, 2rem);
+    margin: 0 0 1rem 0;
 }
 
 .destacado__info {
@@ -390,11 +401,12 @@ main section {
     border: 0.125rem solid var(--color-borde);
     border-radius: 0.5rem;
     box-shadow: var(--sombra);
-    transition: transform 0.2s, border-color 0.2s;
+    
+    transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 .galeria img:hover {
-    transform: scale(1.03);
+    transform: scale(1.08);
     border-color: var(--color-acento);
 }
 
@@ -560,6 +572,8 @@ footer p {
     border-radius: 0.5rem;
     box-shadow: var(--sombra);
     cursor: pointer;
+
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 /* :link y :visited para los botones que son enlaces */
@@ -572,7 +586,14 @@ footer p {
 
 .boton:hover {
     background-color: transparent;
-    color: var(--color-boton);
+    color: var(--color-acento);
+    transform: translateY(-2px);
+}
+
+.boton:focus-visible,
+header nav a:focus-visible {
+    outline: 0.2rem solid var(--color-acento);
+    outline-offset: 0.25rem;
 }
 
 /* boton secundario */
@@ -926,13 +947,22 @@ header a:active {
 }
 
 header nav a {
-    background-color: var(--color-header-superficie);
-    border-color: var(--color-header-borde);
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 0.125rem solid var(--color-borde);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
 header nav a:hover {
-    color: var(--color-header-acento);
-    border-color: var(--color-header-acento);
+    color: var(--color-acento);
+    border-color: var(--color-acento);
+    background-color: rgba(69, 248, 24, 0.12);
 }
 
 header form button {
