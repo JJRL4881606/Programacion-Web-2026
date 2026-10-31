@@ -20,6 +20,7 @@
    18. Header y footer siempre oscuros
    19. Animaciones
    20. Reduced motion
+   21. Interacciones (botón modo oscuro, menú hamburguesa, filtro para buscar)
    ========================================================== */
 
 /* 1. Variables y paletas (claro y oscuro) */
@@ -63,11 +64,58 @@
     --radio-boton: 0.5rem;
 }
 
-/* paleta oscura */
+/* paleta oscura, se activa sola si el dispositivo esta en modo oscuro */
 @media (prefers-color-scheme: dark) {
     :root {
         --color-fondo: #070750;
         --color-header: #08052c;
+        --color-texto: white;
+        --color-texto-suave: #b8b8d9;
+        --color-tarjeta: #070750;
+        --color-borde: #171661;
+        --color-acento: #45f818;
+        --color-texto-acento: #1a1a1a;
+        --color-peligro: #ff6b6b;
+        --color-superficie: rgba(255, 255, 255, 0.08);
+        --color-campo: #0d0d3a;
+        --color-campo-texto: white;
+        --color-placeholder: #9a9ac0;
+        --sombra: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.4);
+        --sombra-hover: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.6);
+
+        --color-boton: #45f818;
+        --color-boton-texto: #1a1a1a;
+    }
+
+    /* dispositivo oscuro y boton, pasa a claro */
+    body.invertido {
+        color-scheme: light;
+
+        --color-fondo: #d9ddff;
+        --color-texto: #0a0a3d;
+        --color-texto-suave: #3f3f7a;
+        --color-tarjeta: #eceeff;
+        --color-borde: #6c71dd;
+        --color-acento: #0e7a1c;
+        --color-texto-acento: #ffffff;
+        --color-boton: #070750;
+        --color-boton-texto: #ffffff;
+        --color-peligro: #c62828;
+        --color-superficie: rgba(7, 7, 80, 0.08);
+        --color-campo: #ffffff;
+        --color-campo-texto: #0a0a3d;
+        --color-placeholder: #6b6b8f;
+        --sombra: 0 0.25rem 0.75rem rgba(7, 7, 80, 0.2);
+        --sombra-hover: 0 0.5rem 1.25rem rgba(7, 7, 80, 0.35);
+    }
+}
+
+/* dispositivo claro y boton, pasa a oscuro */
+@media (prefers-color-scheme: light) {
+    body.invertido {
+        color-scheme: dark;
+
+        --color-fondo: #070750;
         --color-texto: white;
         --color-texto-suave: #b8b8d9;
         --color-tarjeta: #070750;
@@ -274,6 +322,7 @@ main section {
         border-radius: var(--radio-borde);
         box-shadow: var(--sombra);
         transition: transform 0.25s ease, box-shadow 0.25s ease;
+        animation: aparecer-tarjeta 0.8s ease-out;
 
         &:hover {
             transform: translateY(-0.5rem);
@@ -475,9 +524,9 @@ footer p {
 .carrito {
     width: 90%;
     max-width: 80rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
     gap: 1.5rem;
 }
 
@@ -917,6 +966,10 @@ button:focus-visible {
         grid-template-columns: 1.3fr 1fr;
         align-items: center;
     }
+
+    .carrito {
+        grid-template-columns: 2fr 1fr;
+    }
 }
 
 /* Responsive para escritorio */
@@ -1009,4 +1062,49 @@ footer {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+/* 21. Interacciones (botón modo oscuro, menú hamburguesa, filtro para buscar) */
+.btn-header {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--color-header-texto);
+    font-size: 1rem;
+    border: 0.125rem solid var(--color-borde);
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.btn-header:hover {
+    color: var(--color-header-acento);
+    border-color: var(--color-header-acento);
+}
+
+/* en movil el menu esta oculto hasta que se abre */
+#menu {
+    display: none;
+}
+
+#menu.abierto {
+    display: flex;
+}
+
+/* en tablet y compu el menu siempre se ve y no ocupamos la hamburguesa */
+@media (min-width: 820px) {
+    #menu {
+        display: flex;
+    }
+
+    .btn-menu {
+        display: none;
+    }
+}
+
+/* clase para ocultar elementos al filtrar */
+/* las tarjetas tienen display: flex, así que hay que dejar que hidden las oculte */
+.catalogo .juego[hidden] {
+    display: none;
 }

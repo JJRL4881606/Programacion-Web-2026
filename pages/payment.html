@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Proyecto de programación web, desarrollo de página web de compras de videojuegos online.">
+    <meta name="author" content="Josué Eleazar Burgos Urías, Marcos Uriel Castro Perales">
+    <meta name="keywords" content="html, proyecto, página web">
+
+    <meta property="og:title" content="Pago - GameZone">
+    <meta property="og:description" content="Tienda online de videojuegos">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jjrl4881606.github.io/Programacion-Web-2026/pages/payment.html">
+    <meta property="og:image" content="https://jjrl4881606.github.io/Programacion-Web-2026/assets/img/logo.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/webp" href="../assets/icons/favicon.webp">
+
+    <title>Pago - GameZone</title>
+
+    <link rel="canonical" href="https://jjrl4881606.github.io/Programacion-Web-2026/pages/payment.html">
+    <meta name="robots" content="index, follow">
+    <link rel="alternate" hreflang="es" href="https://jjrl4881606.github.io/Programacion-Web-2026/pages/payment.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">
+            <a href="../index.html">
+                <img src="../assets/img/logo.webp" alt="GameZone" width="320" height="80">
+            </a>
+        </h1>
+
+        <form role="search" action="../pages/search.html" method="get">
+            <input type="search" id="buscar" name="buscar" placeholder="Buscar juegos" aria-label="Buscar juegos">
+            <button type="submit" aria-label="Buscar">
+                <img src="../assets/icons/icon-search.webp" alt="" width="20" height="20">
+            </button>
+        </form>
+
+        <nav aria-label="Cuenta y compras">
+            <a href="../pages/cart.html">
+                <img src="../assets/icons/icon-cart.webp" alt="" width="20" height="20">
+                Carrito
+            </a>
+
+            <a href="../pages/profile.html">
+                <img src="../assets/icons/icon-profile.webp" alt="" width="20" height="20">
+                Perfil
+            </a>
+
+            <button type="button" id="btn-tema" class="btn-header">Cambiar modo</button>
+        </nav>
+
+        <button type="button" id="btn-menu" class="btn-header btn-menu" aria-label="Abrir menú">☰ Menú</button>
+
+        <nav id="menu" aria-label="Categorías y ofertas">
+            <a href="../index.html">
+                <img src="../assets/icons/icon-home.webp" alt="" width="20" height="20">
+                Inicio
+            </a>
+
+            <a href="../pages/categories.html">
+                <img src="../assets/icons/icon-categories.webp" alt="" width="20" height="20">
+                Categorías
+            </a>
+
+            <a href="../pages/sales.html">
+                <img src="../assets/icons/icon-sales.webp" alt="" width="20" height="20">
+                Ofertas
+            </a>
+        </nav>
+    </header>
+
+    <main class="registro">
+        <h2 class="titulo-pagina">Pago</h2>
+
+        <p class="aviso">Los campos marcados con <strong aria-hidden="true">*</strong> son obligatorios.</p>
+
+        <section class="tarjeta">
+            <h2>Resumen del pedido</h2>
+
+            <ul class="ficha">
+                <li><strong>Minecraft:</strong> $800.00</li>
+                <li><strong>Human Fall Flat:</strong> $200.00</li>
+                <li><strong>Total:</strong> $1,000.00</li>
+            </ul>
+        </section>
+
+        <form class="formulario tarjeta" action="#" method="post">
+            <fieldset>
+                <legend>Datos de la tarjeta</legend>
+
+                <p>
+                    <label for="titular">Nombre del titular <span aria-hidden="true">*</span></label><br>
+                    <input type="text" id="titular" name="titular" autocomplete="cc-name" required>
+                </p>
+
+                <p>
+                    <label for="tarjeta">Número de tarjeta <span aria-hidden="true">*</span></label><br>
+                    <input type="text" id="tarjeta" name="tarjeta" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" maxlength="19" pattern="[0-9 ]{13,19}" required aria-describedby="tarjeta-ayuda">
+                    <br><small id="tarjeta-ayuda">Solo números, de 13 a 16 dígitos.</small>
+                </p>
+
+                <p>
+                    <label for="vencimiento">Vencimiento <span aria-hidden="true">*</span></label><br>
+                    <input type="text" id="vencimiento" name="vencimiento" autocomplete="cc-exp" placeholder="MM/AA" maxlength="5" pattern="(0[1-9]|1[0-2])/[0-9]{2}" required>
+                </p>
+
+                <p>
+                    <label for="cvv">Código de seguridad (CVV) <span aria-hidden="true">*</span></label><br>
+                    <input type="password" id="cvv" name="cvv" inputmode="numeric" autocomplete="cc-csc" maxlength="4" pattern="[0-9]{3,4}" required aria-describedby="cvv-ayuda">
+                    <br><small id="cvv-ayuda">Los 3 o 4 dígitos del reverso de la tarjeta.</small>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Recibo</legend>
+
+                <p>
+                    <label for="correo-recibo">Correo para enviar el recibo <span aria-hidden="true">*</span></label><br>
+                    <input type="email" id="correo-recibo" name="correo-recibo" autocomplete="email" required>
+                </p>
+            </fieldset>
+
+            <button type="submit" class="boton">Pagar $1,000.00</button>
+            <a class="boton boton--secundario" href="../pages/cart.html" aria-label="Volver al carrito">Volver al carrito</a>
+        </form>
+    </main>
+
+    <footer>
+        <p>Versión <strong>1.0.0</strong></p>
+        <p>(C) 2026 GameZone. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

@@ -40,7 +40,7 @@
             </a>
         </h1>
 
-        <form role="search" action="#">
+        <form role="search" action="../pages/search.html" method="get">
             <input type="search" id="buscar" name="buscar" placeholder="Buscar juegos" aria-label="Buscar juegos">
             <button type="submit" aria-label="Buscar">
                 <img src="../assets/icons/icon-search.webp" alt="" width="20" height="20">
@@ -57,9 +57,13 @@
                 <img src="../assets/icons/icon-profile.webp" alt="" width="20" height="20">
                 Perfil
             </a>
-        </nav>
 
-        <nav aria-label="Categorías y ofertas">
+            <button type="button" id="btn-tema" class="btn-header">Cambiar modo</button>
+        </nav>
+        
+        <button type="button" id="btn-menu" class="btn-header btn-menu" aria-label="Abrir menú">☰ Menú</button>
+
+        <nav id="menu" aria-label="Categorías y ofertas">
             <a href="../index.html">
                 <img src="../assets/icons/icon-home.webp" alt="" width="20" height="20">
                 Inicio
@@ -125,6 +129,8 @@
         <p>Versión <strong>1.0.0</strong></p>
         <p>(C) 2026 GameZone. Todos los derechos reservados.</p>
     </footer>
+    
+    <script src="../js/script.js"></script>
 </body>
 
 </html>

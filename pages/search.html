@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Proyecto de programación web, desarrollo de página web de compras de videojuegos online.">
+    <meta name="author" content="Josué Eleazar Burgos Urías, Marcos Uriel Castro Perales">
+    <meta name="keywords" content="html, proyecto, página web">
+
+    <meta property="og:title" content="Búsqueda - GameZone">
+    <meta property="og:description" content="Tienda online de videojuegos">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jjrl4881606.github.io/Programacion-Web-2026/pages/search.html">
+    <meta property="og:image" content="https://jjrl4881606.github.io/Programacion-Web-2026/assets/img/logo.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/webp" href="../assets/icons/favicon.webp">
+
+    <title>Búsqueda - GameZone | Página de compra de videojuegos online</title>
+
+    <link rel="canonical" href="https://jjrl4881606.github.io/Programacion-Web-2026/pages/search.html">
+    <meta name="robots" content="index, follow">
+    <link rel="alternate" hreflang="es" href="https://jjrl4881606.github.io/Programacion-Web-2026/pages/search.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">
+            <a href="../index.html">
+                <img src="../assets/img/logo.webp" alt="GameZone" width="320" height="80">
+            </a>
+        </h1>
+
+        <form role="search" action="search.html" method="get">
+            <input type="search" id="buscar" name="buscar" placeholder="Buscar juegos" aria-label="Buscar juegos">
+            <button type="submit" aria-label="Buscar">
+                <img src="../assets/icons/icon-search.webp" alt="" width="20" height="20">
+            </button>
+        </form>
+
+        <nav aria-label="Cuenta y compras">
+            <a href="cart.html">
+                <img src="../assets/icons/icon-cart.webp" alt="" width="20" height="20">
+                Carrito
+            </a>
+
+            <a href="profile.html">
+                <img src="../assets/icons/icon-profile.webp" alt="" width="20" height="20">
+                Perfil
+            </a>
+
+            <button type="button" id="btn-tema" class="btn-header">Cambiar modo</button>
+        </nav>
+
+        <button type="button" id="btn-menu" class="btn-header btn-menu" aria-label="Abrir menú">☰ Menú</button>
+
+        <nav id="menu" aria-label="Categorías y ofertas">
+            <a href="../index.html">
+                <img src="../assets/icons/icon-home.webp" alt="" width="20" height="20">
+                Inicio
+            </a>
+
+            <a href="categories.html">
+                <img src="../assets/icons/icon-categories.webp" alt="" width="20" height="20">
+                Categorías
+            </a>
+
+            <a href="sales.html">
+                <img src="../assets/icons/icon-sales.webp" alt="" width="20" height="20">
+                Ofertas
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Resultados de búsqueda</h2>
+
+            <p id="sin-resultados" hidden>No se encontraron juegos con ese nombre.</p>
+
+            <div class="catalogo" id="resultados">
+
+                <article class="juego">
+                    <img class="juego__imagen" src="../assets/img/minecraft-2.jpg" alt="Minecraft" width="300" height="300" loading="lazy">
+
+                    <div class="juego__info">
+                        <h3>Minecraft</h3>
+                        <p class="precio"><strong>$800.00</strong></p>
+                        <a class="boton" href="game.html" aria-label="Ver detalles de Minecraft">Ver detalles</a>
+                    </div>
+                </article>
+
+                <article class="juego">
+                    <img class="juego__imagen" src="../assets/img/human-fall-flat.jpg" alt="Human Fall Flat" width="300" height="300" loading="lazy">
+
+                    <div class="juego__info">
+                        <h3>Human Fall Flat</h3>
+                        <p class="precio"><strong>$200.00</strong></p>
+                        <a class="boton" href="game.html" aria-label="Ver detalles de Human Fall Flat">Ver detalles</a>
+                    </div>
+                </article>
+
+                <article class="juego">
+                    <img class="juego__imagen" src="../assets/img/forza-horizon-6.jpg" alt="Forza Horizon 6" width="300" height="300" loading="lazy">
+
+                    <div class="juego__info">
+                        <h3>Forza Horizon 6</h3>
+                        <p class="precio"><strong>$1800.00</strong></p>
+                        <a class="boton" href="game.html" aria-label="Ver detalles de Forza Horizon 6">Ver detalles</a>
+                    </div>
+                </article>
+
+                <article class="juego">
+                    <img class="juego__imagen" src="../assets/img/cyberpunk-2077.jpg" alt="Cyberpunk 2077" width="300" height="300" loading="lazy">
+
+                    <div class="juego__info">
+                        <h3>Cyberpunk 2077</h3>
+                        <p class="precio"><strong>$1300.00</strong></p>
+                        <a class="boton" href="game.html" aria-label="Ver detalles de Cyberpunk 2077">Ver detalles</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Versión <strong>1.0.0</strong></p>
+        <p>(C) 2026 GameZone. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
