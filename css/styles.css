@@ -135,6 +135,14 @@
     }
 }
 
+/* Mensajes de error del registro */
+.error {
+    display: block;
+    color: #e53935;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
 /* 2. Base (reset, body, tipografía, precios) */
 img {
     max-width: 100%;

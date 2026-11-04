@@ -86,23 +86,26 @@
 
         <p class="aviso">Los campos marcados con <strong aria-hidden="true">*</strong> son obligatorios.</p>
 
-        <form class="formulario tarjeta" action="#" method="post">
+        <form class="formulario tarjeta" id="formRegistro" action="#" method="post" novalidate >
             <fieldset>
                 <legend>Datos personales</legend>
 
                 <p>
                     <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label><br>
                     <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+                    <span class="error" id="error-nombre"></span>
                 </p>
 
                 <p>
                     <label for="correo">Correo electrónico <span aria-hidden="true">*</span></label><br>
                     <input type="email" id="correo" name="correo" autocomplete="email" required>
+                    <span class="error" id="error-correo"></span>
                 </p>
 
                 <p>
                     <label for="nacimiento">Fecha de nacimiento <span aria-hidden="true">*</span></label><br>
                     <input type="date" id="nacimiento" name="nacimiento" autocomplete="bday" required>
+                    <span class="error" id="error-nacimiento"></span>
                 </p>
 
                 <p>
@@ -116,6 +119,8 @@
                         <option value="ES">España</option>
                         <option value="otro">Otro</option>
                     </select>
+
+                    <span class="error" id="error-pais"></span>
                 </p>
             </fieldset>
 
@@ -125,12 +130,14 @@
                 <p>
                     <label for="password">Contraseña <span aria-hidden="true">*</span></label><br>
                     <input type="password" id="password" name="password" autocomplete="new-password" minlength="8" required aria-describedby="password-ayuda">
+                    <span class="error" id="error-contrasenia"></span>
                     <br><small id="password-ayuda">Debe tener al menos 8 caracteres.</small>
                 </p>
 
                 <p>
                     <label for="password-confirmar">Confirmar contraseña <span aria-hidden="true">*</span></label><br>
                     <input type="password" id="password-confirmar" name="password-confirmar" autocomplete="new-password" minlength="8" required>
+                    <span class="error" id="error-confirmar-contrasenia"></span>
                 </p>
             </fieldset>
 
@@ -153,6 +160,7 @@
             <p>
                 <input type="checkbox" id="terminos" name="terminos" required>
                 <label for="terminos">Acepto los términos y condiciones <span aria-hidden="true">*</span></label>
+                <span class="error" id="error-terminos"></span>
             </p>
 
             <button type="submit" class="boton">Crear cuenta</button>
@@ -165,6 +173,7 @@
     </footer>
     
     <script src="../js/script.js"></script>
+    <script src="../js/registro.js" type="module"></script>
 </body>
 
 </html>
