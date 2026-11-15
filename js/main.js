@@ -28,6 +28,7 @@ async function cargarCatalogo() {
         mostrarEstado("");
         renderCatalogo(juegos, favoritos);
     } catch (err) {
+        console.error(err);
         mostrarEstado("No pudimos cargar los juegos. Inténtalo de nuevo más tarde.");
         alertaError("No pudimos cargar el catálogo de juegos.");
     }
