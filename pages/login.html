@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Proyecto de programación web, desarrollo de página web de compras de videojuegos online.">
+    <meta name="author" content="Josué Eleazar Burgos Urías, Marcos Uriel Castro Perales">
+    <meta name="keywords" content="html, proyecto, página web">
+
+    <meta property="og:title" content="Iniciar sesión - GameZone">
+    <meta property="og:description" content="Tienda online de videojuegos">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jjrl4881606.github.io/Programacion-Web-2026/pages/login.html">
+    <meta property="og:image" content="https://jjrl4881606.github.io/Programacion-Web-2026/assets/img/logo.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/webp" href="../assets/icons/favicon.webp">
+
+    <title>Iniciar sesión - GameZone</title>
+
+    <link rel="canonical" href="https://jjrl4881606.github.io/Programacion-Web-2026/pages/login.html">
+    <meta name="robots" content="index, follow">
+    <link rel="alternate" hreflang="es" href="https://jjrl4881606.github.io/Programacion-Web-2026/pages/login.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">
+            <a href="../index.html">
+                <img src="../assets/img/logo.webp" alt="GameZone" width="320" height="80">
+            </a>
+        </h1>
+
+        <form role="search" action="../pages/search.html" method="get">
+            <input type="search" id="buscar" name="buscar" placeholder="Buscar juegos" aria-label="Buscar juegos">
+            <button type="submit" aria-label="Buscar">
+                <img src="../assets/icons/icon-search.webp" alt="" width="20" height="20">
+            </button>
+        </form>
+
+        <nav aria-label="Cuenta y compras">
+            <a href="../pages/cart.html">
+                <img src="../assets/icons/icon-cart.webp" alt="" width="20" height="20">
+                Carrito
+            </a>
+
+            <a href="../pages/profile.html">
+                <img src="../assets/icons/icon-profile.webp" alt="" width="20" height="20">
+                Perfil
+            </a>
+
+            <button type="button" id="btn-tema" class="btn-header">Cambiar modo</button>
+        </nav>
+
+        <button type="button" id="btn-menu" class="btn-header btn-menu" aria-label="Abrir menú">☰ Menú</button>
+
+        <nav id="menu" aria-label="Categorías y ofertas">
+            <a href="../index.html">
+                <img src="../assets/icons/icon-home.webp" alt="" width="20" height="20">
+                Inicio
+            </a>
+
+            <a href="../pages/categories.html">
+                <img src="../assets/icons/icon-categories.webp" alt="" width="20" height="20">
+                Categorías
+            </a>
+
+            <a href="../pages/sales.html">
+                <img src="../assets/icons/icon-sales.webp" alt="" width="20" height="20">
+                Ofertas
+            </a>
+        </nav>
+    </header>
+
+    <main class="registro">
+        <h2 class="titulo-pagina">Iniciar sesión</h2>
+
+        <p class="aviso">Los campos marcados con <strong aria-hidden="true">*</strong> son obligatorios.</p>
+
+        <form class="formulario tarjeta" id="formLogin" action="#" method="post" novalidate>
+            <fieldset>
+                <legend>Datos de acceso</legend>
+
+                <p>
+                    <label for="correo">Correo electrónico <span aria-hidden="true">*</span></label><br>
+                    <input type="email" id="correo" name="correo" autocomplete="email" required>
+                    <span class="error" id="error-correo"></span>
+                </p>
+
+                <p>
+                    <label for="password">Contraseña <span aria-hidden="true">*</span></label><br>
+                    <input type="password" id="password" name="password" autocomplete="current-password" required>
+                    <span class="error" id="error-contrasenia"></span>
+                </p>
+            </fieldset>
+
+            <p>
+                <input type="checkbox" id="recordarme" name="recordarme">
+                <label for="recordarme">Recordarme en este dispositivo</label>
+            </p>
+
+            <button type="submit" class="boton">Iniciar sesión</button>
+
+            <p>¿No tienes cuenta? <a href="register.html">Regístrate aquí</a>.</p>
+        </form>
+    </main>
+    
+    <footer>
+        <p>Versión <strong>1.0.0</strong></p>
+        <p>(C) 2026 GameZone. Todos los derechos reservados.</p>
+    </footer>
+
+    <script type="module" src="../js/script.js"></script>
+</body>
+
+</html>

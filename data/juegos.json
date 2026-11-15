@@ -1,0 +1,6 @@
+[
+    { "id": 1, "nombre": "Minecraft", "precio": 800, "imagen": "assets/img/minecraft-2.jpg" },
+    { "id": 2, "nombre": "Human Fall Flat", "precio": 200, "imagen": "assets/img/human-fall-flat.jpg" },
+    { "id": 3, "nombre": "Forza Horizon 6", "precio": 1800, "imagen": "assets/img/forza-horizon-6.jpg" },
+    { "id": 4, "nombre": "Cyberpunk 2077", "precio": 1300, "imagen": "assets/img/cyberpunk-2077.jpg" }
+]

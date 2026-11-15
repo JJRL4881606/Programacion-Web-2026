@@ -84,26 +84,29 @@
     <main class="perfil">
         <h2 class="titulo-pagina">Perfil</h2>
 
-        <section class="tarjeta">
-            <h2>Sesión</h2>
-            <button type="button" class="boton boton--secundario">Cerrar sesión</button>
-            <p>¿No tienes cuenta? <a href="register.html">Regístrate aquí</a>.</p>
-        </section>
+        <div class="perfil__paneles">
+            <section class="tarjeta">
+                <h2>Datos de la cuenta</h2>
 
-        <section class="tarjeta">
-            <h2>Datos de la cuenta</h2>
+                <div class="perfil__cuenta">
+                    <img class="perfil__avatar" src="../assets/img/avatar-default.webp" alt="Foto de perfil" width="100" height="100">
 
-            <div class="perfil__cuenta">
-                <img class="perfil__avatar" src="../assets/img/avatar-default.webp" alt="Foto de perfil" width="100" height="100">
-
-                <div class="perfil__texto">
-                    <p>Nombre: <strong>Alguien sin nombre</strong></p>
-                    <p>Correo electrónico: <strong>alguien.sin.nombre@gmail.com</strong></p>
-                    <p>Contraseña: <strong>••••••••</strong></p>
-                    <button type="button" class="boton">Editar perfil</button>
+                    <div class="perfil__texto">
+                        <p>Nombre: <strong>Alguien sin nombre</strong></p>
+                        <p>Correo electrónico: <strong>alguien.sin.nombre@gmail.com</strong></p>
+                        <p>Contraseña: <strong>••••••••</strong></p>
+                        <button type="button" class="boton">Editar perfil</button>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <section class="tarjeta perfil__sesion">
+                <h2>Sesión</h2>
+                <button type="button" class="boton boton--secundario">Cerrar sesión</button>
+                <p>¿No tienes cuenta? <a href="register.html">Regístrate aquí</a>.</p>
+                <p>¿Ya tienes una? <a href="login.html">Inicia sesión</a>.</p>
+            </section>
+        </div>
 
         <section>
             <h2>Historial de compras</h2>
@@ -129,13 +132,13 @@
             </div>
         </section>
     </main>
-
+    
     <footer>
         <p>Versión <strong>1.0.0</strong></p>
         <p>(C) 2026 GameZone. Todos los derechos reservados.</p>
     </footer>
     
-    <script src="../js/script.js"></script>
+    <script type="module" src="../js/script.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,5 @@
+import { guardar, leer } from "./storage.js";
+
 // 1. menu hamburguesa
 const btnMenu = document.querySelector("#btn-menu");
 const menu = document.querySelector("#menu");
@@ -9,25 +11,31 @@ btnMenu.addEventListener("click", () => {
 // 2. modo claro / oscuro
 const btnTema = document.querySelector("#btn-tema");
 
+// al cargar aplica la preferencia guardada (false si nunca eligió)
+if (leer("invertido", false)) {
+    document.body.classList.add("invertido");
+}
+
 btnTema.addEventListener("click", () => {
     document.body.classList.toggle("invertido");
+    guardar("invertido", document.body.classList.contains("invertido"));
 });
 
-// 3. buscador: filtra los juegos mientras se escribe
+// 3. buscador: guarda el texto y filtra los juegos en search.html
 const buscador = document.querySelector("#buscar");
+const formBuscador = document.querySelector("header form");
 
-//solose ejecuta en search.html la pagina que tiene #resultados
+// al buscar se guarda el texto para search.html
+formBuscador.addEventListener("submit", () => {
+    sessionStorage.setItem("busqueda", buscador.value);
+});
+
+// se ejecuta en search.html
 if (document.querySelector("#resultados")) {
     const mensaje = document.querySelector("#sin-resultados");
-    const form = document.querySelector("header form");
 
-    // evita que la pagina se recarge al dar enter o clic en el boton de buscar
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-    });
-
-    buscador.addEventListener("input", (e) => {
-        const texto = e.target.value.toLowerCase().trim();
+    const filtrar = (valor) => {
+        const texto = valor.toLowerCase().trim();
         let encontrados = 0;
 
         document.querySelectorAll("#resultados .juego").forEach((juego) => {
@@ -43,5 +51,14 @@ if (document.querySelector("#resultados")) {
 
         // muestra el mensaje solo si no hay resultados
         mensaje.hidden = encontrados > 0;
+    };
+
+    // al cargar pone en la barra el texto guardado y filtra con el
+    buscador.value = sessionStorage.getItem("busqueda") ?? "";
+    filtrar(buscador.value);
+
+    // mientras el usuario escribe
+    buscador.addEventListener("input", (e) => {
+        filtrar(e.target.value);
     });
 }

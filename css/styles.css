@@ -362,6 +362,33 @@ main section {
     margin: 0;
 }
 
+.juego__acciones {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.favorito {
+    padding: 0.4rem 0.75rem;
+    background-color: transparent;
+    color: var(--color-texto);
+    font-size: 1.25rem;
+    line-height: 1;
+    border: 0.125rem solid var(--color-borde);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.favorito:hover {
+    border-color: var(--color-acento);
+}
+
+.favorito[aria-pressed="true"] {
+    color: var(--color-peligro);
+    border-color: var(--color-peligro);
+}
+
 /* 7. Juego destacado, etiquetas y galería */
 .destacado {
     display: flex;
@@ -666,17 +693,6 @@ header nav a:focus-visible {
     border-color: var(--color-peligro);
 }
 
-/* cantidad */
-input[type="number"] {
-    width: 5rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 0.125rem solid var(--color-borde);
-    border-radius: 0.5rem;
-    background-color: var(--color-campo);
-    color: var(--color-campo-texto);
-}
-
 /* 12. Ofertas */
 .descuento {
     align-self: flex-start;
@@ -731,6 +747,31 @@ input[type="number"] {
 }
 
 .perfil__texto p {
+    margin: 0;
+}
+
+/* cuenta y sesión: una debajo de otra en móvil */
+.perfil__paneles {
+    width: min(80rem, 90%);
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 1.5rem;
+}
+
+.perfil__paneles section {
+    width: 100%;
+}
+
+.perfil__sesion {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.perfil__sesion h2,
+.perfil__sesion p {
     margin: 0;
 }
 
@@ -951,6 +992,7 @@ button:focus-visible {
 
     header form {
         grid-area: buscar;
+        max-width: none;
     }
 
     header > nav[aria-label="Cuenta y compras"] {
@@ -959,6 +1001,7 @@ button:focus-visible {
 
     header > nav[aria-label="Categorías y ofertas"] {
         grid-area: menu;
+        justify-content: flex-start;
     }
 
     main section {
@@ -976,6 +1019,10 @@ button:focus-visible {
     }
 
     .carrito {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .perfil__paneles {
         grid-template-columns: 2fr 1fr;
     }
 }
