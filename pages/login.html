@@ -33,12 +33,13 @@
 </head>
 
 <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
     <header>
-        <h1 class="logo">
+        <div class="logo">
             <a href="../index.html">
                 <img src="../assets/img/logo.webp" alt="GameZone" width="320" height="80">
             </a>
-        </h1>
+        </div>
 
         <form role="search" action="../pages/search.html" method="get">
             <input type="search" id="buscar" name="buscar" placeholder="Buscar juegos" aria-label="Buscar juegos">
@@ -48,6 +49,10 @@
         </form>
 
         <nav aria-label="Cuenta y compras">
+            <a href="../pages/favorites.html">
+                <span aria-hidden="true">♥</span>
+                Favoritos
+            </a>
             <a href="../pages/cart.html">
                 <img src="../assets/icons/icon-cart.webp" alt="" width="20" height="20">
                 Carrito
@@ -58,10 +63,13 @@
                 Perfil
             </a>
 
-            <button type="button" id="btn-tema" class="btn-header">Cambiar modo</button>
+            <button type="button" id="btn-tema" class="btn-header btn-tema" aria-label="Cambiar entre modo claro y oscuro" title="Cambiar modo">
+                <img class="icono-luna" src="../assets/icons/icon-moon.webp" alt="" width="20" height="20">
+                <img class="icono-sol" src="../assets/icons/icon-sun.webp" alt="" width="20" height="20">
+            </button>
         </nav>
 
-        <button type="button" id="btn-menu" class="btn-header btn-menu" aria-label="Abrir menú">☰ Menú</button>
+        <button type="button" id="btn-menu" class="btn-header btn-menu" aria-controls="menu" aria-expanded="false"><span aria-hidden="true">☰</span> Menú</button>
 
         <nav id="menu" aria-label="Categorías y ofertas">
             <a href="../index.html">
@@ -82,7 +90,7 @@
     </header>
 
     <main class="registro">
-        <h2 class="titulo-pagina">Iniciar sesión</h2>
+        <h1 class="titulo-pagina">Iniciar sesión</h1>
 
         <p class="aviso">Los campos marcados con <strong aria-hidden="true">*</strong> son obligatorios.</p>
 
@@ -113,12 +121,28 @@
             <p>¿No tienes cuenta? <a href="register.html">Regístrate aquí</a>.</p>
         </form>
     </main>
-    
+      
     <footer>
-        <p>Versión <strong>1.0.0</strong></p>
-        <p>(C) 2026 GameZone. Todos los derechos reservados.</p>
-    </footer>
+        <div class="footer__contenido">
+            <a class="footer__logo" href="../index.html">
+                <img src="../assets/img/logo.webp" alt="GameZone" width="160" height="40">
+            </a>
 
+            <nav aria-label="Enlaces del pie de página">
+                <a href="../index.html">Inicio</a>
+                <a href="../pages/categories.html">Categorías</a>
+                <a href="../pages/sales.html">Ofertas</a>
+                <a href="../pages/cart.html">Carrito</a>
+                <a href="../pages/profile.html">Perfil</a>
+            </nav>
+        </div>
+
+        <div class="footer__legal">
+            <p>(C) 2026 GameZone. Todos los derechos reservados.</p>
+            <p>Versión <strong>1.0.0</strong></p>
+        </div>
+    </footer>
+    
     <script type="module" src="../js/script.js"></script>
 </body>
 

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Proyecto de programación web, desarrollo de página web de compras de videojuegos online.">
+    <meta name="author" content="Josué Eleazar Burgos Urías, Marcos Uriel Castro Perales">
+    <meta name="keywords" content="html, proyecto, página web">
+
+    <meta property="og:title" content="Editar perfil - GameZone">
+    <meta property="og:description" content="Tienda online de videojuegos">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jjrl4881606.github.io/Programacion-Web-2026/pages/edit-profile.html">
+    <meta property="og:image" content="https://jjrl4881606.github.io/Programacion-Web-2026/assets/img/logo.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/webp" href="../assets/icons/favicon.webp">
+
+    <title>Editar perfil - GameZone</title>
+
+    <link rel="canonical" href="https://jjrl4881606.github.io/Programacion-Web-2026/pages/edit-profile.html">
+    <meta name="robots" content="index, follow">
+    <link rel="alternate" hreflang="es" href="https://jjrl4881606.github.io/Programacion-Web-2026/pages/edit-profile.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+    <header>
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../assets/img/logo.webp" alt="GameZone" width="320" height="80">
+            </a>
+        </div>
+
+        <form role="search" action="../pages/search.html" method="get">
+            <input type="search" id="buscar" name="buscar" placeholder="Buscar juegos" aria-label="Buscar juegos">
+            <button type="submit" aria-label="Buscar">
+                <img src="../assets/icons/icon-search.webp" alt="" width="20" height="20">
+            </button>
+        </form>
+
+        <nav aria-label="Cuenta y compras">
+            <a href="../pages/favorites.html">
+                <span aria-hidden="true">♥</span>
+                Favoritos
+            </a>
+
+            <a href="../pages/cart.html">
+                <img src="../assets/icons/icon-cart.webp" alt="" width="20" height="20">
+                Carrito
+            </a>
+
+            <a href="../pages/profile.html">
+                <img src="../assets/icons/icon-profile.webp" alt="" width="20" height="20">
+                Perfil
+            </a>
+
+            <button type="button" id="btn-tema" class="btn-header btn-tema" aria-label="Cambiar entre modo claro y oscuro" title="Cambiar modo">
+                <img class="icono-luna" src="../assets/icons/icon-moon.webp" alt="" width="20" height="20">
+                <img class="icono-sol" src="../assets/icons/icon-sun.webp" alt="" width="20" height="20">
+            </button>
+        </nav>
+
+        <button type="button" id="btn-menu" class="btn-header btn-menu" aria-controls="menu" aria-expanded="false"><span aria-hidden="true">☰</span> Menú</button>
+
+        <nav id="menu" aria-label="Categorías y ofertas">
+            <a href="../index.html">
+                <img src="../assets/icons/icon-home.webp" alt="" width="20" height="20">
+                Inicio
+            </a>
+
+            <a href="../pages/categories.html">
+                <img src="../assets/icons/icon-categories.webp" alt="" width="20" height="20">
+                Categorías
+            </a>
+
+            <a href="../pages/sales.html">
+                <img src="../assets/icons/icon-sales.webp" alt="" width="20" height="20">
+                Ofertas
+            </a>
+        </nav>
+    </header>
+
+    <main id="contenido" class="registro">
+        <h1 class="titulo-pagina">Editar perfil</h1>
+
+        <p class="aviso">Los campos marcados con <strong aria-hidden="true">*</strong> son obligatorios.</p>
+
+        <form class="formulario tarjeta" id="formEditarPerfil" action="#" method="post">
+            <fieldset>
+                <legend>Datos personales</legend>
+
+                <p>
+                    <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label><br>
+                    <input type="text" id="nombre" name="nombre" autocomplete="name" value="Alguien sin nombre" required>
+                </p>
+
+                <p>
+                    <label for="correo">Correo electrónico <span aria-hidden="true">*</span></label><br>
+                    <input type="email" id="correo" name="correo" autocomplete="email" value="alguien.sin.nombre@gmail.com" required>
+                </p>
+
+                <p>
+                    <label for="nacimiento">Fecha de nacimiento <span aria-hidden="true">*</span></label><br>
+                    <input type="date" id="nacimiento" name="nacimiento" autocomplete="bday" value="2000-01-15" required>
+                </p>
+
+                <p>
+                    <label for="pais">País</label><br>
+                    <select id="pais" name="pais" autocomplete="country">
+                        <option value="">Selecciona un país</option>
+                        <option value="MX" selected>México</option>
+                        <option value="US">Estados Unidos</option>
+                        <option value="CO">Colombia</option>
+                        <option value="AR">Argentina</option>
+                        <option value="ES">España</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Preferencias</legend>
+
+                <p>
+                    <label for="plataforma">Plataforma favorita</label><br>
+                    <input type="text" id="plataforma" name="plataforma" list="lista-plataformas" autocomplete="off" value="PC">
+                    <datalist id="lista-plataformas">
+                        <option value="PC"></option>
+                        <option value="PlayStation"></option>
+                        <option value="Xbox"></option>
+                        <option value="Nintendo Switch"></option>
+                        <option value="Móvil"></option>
+                    </datalist>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Cambiar contraseña (opcional)</legend>
+
+                <p>
+                    <label for="password-actual">Contraseña actual</label><br>
+                    <input type="password" id="password-actual" name="password-actual" autocomplete="current-password">
+                </p>
+
+                <p>
+                    <label for="password-nueva">Contraseña nueva</label><br>
+                    <input type="password" id="password-nueva" name="password-nueva" autocomplete="new-password" minlength="8" aria-describedby="password-ayuda">
+                    <br><small id="password-ayuda">Déjala vacía si no quieres cambiarla. Mínimo 8 caracteres.</small>
+                </p>
+
+                <p>
+                    <label for="password-confirmar">Confirmar contraseña nueva</label><br>
+                    <input type="password" id="password-confirmar" name="password-confirmar" autocomplete="new-password" minlength="8">
+                </p>
+            </fieldset>
+
+            <div class="acciones-pago">
+                <a class="boton boton--secundario" href="profile.html">Cancelar</a>
+                <button type="submit" class="boton">Guardar cambios</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <div class="footer__contenido">
+            <a class="footer__logo" href="../index.html">
+                <img src="../assets/img/logo.webp" alt="GameZone" width="160" height="40">
+            </a>
+
+            <nav aria-label="Enlaces del pie de página">
+                <a href="../index.html">Inicio</a>
+                <a href="../pages/categories.html">Categorías</a>
+                <a href="../pages/sales.html">Ofertas</a>
+                <a href="../pages/cart.html">Carrito</a>
+                <a href="../pages/profile.html">Perfil</a>
+            </nav>
+        </div>
+
+        <div class="footer__legal">
+            <p>(C) 2026 GameZone. Todos los derechos reservados.</p>
+            <p>Versión <strong>1.0.0</strong></p>
+        </div>
+    </footer>
+
+    <script type="module" src="../js/script.js"></script>
+</body>
+
+</html>

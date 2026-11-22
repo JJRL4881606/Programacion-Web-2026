@@ -33,12 +33,13 @@
 </head>
 
 <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
     <header>
-        <h1 class="logo">
+        <div class="logo">
             <a href="../index.html">
                 <img src="../assets/img/logo.webp" alt="GameZone" width="320" height="80">
             </a>
-        </h1>
+        </div>
 
         <form role="search" action="../pages/search.html" method="get">
             <input type="search" id="buscar" name="buscar" placeholder="Buscar juegos" aria-label="Buscar juegos">
@@ -48,6 +49,10 @@
         </form>
 
         <nav aria-label="Cuenta y compras">
+            <a href="../pages/favorites.html">
+                <span aria-hidden="true">♥</span>
+                Favoritos
+            </a>
             <a href="../pages/cart.html">
                 <img src="../assets/icons/icon-cart.webp" alt="" width="20" height="20">
                 Carrito
@@ -58,10 +63,13 @@
                 Perfil
             </a>
 
-            <button type="button" id="btn-tema" class="btn-header">Cambiar modo</button>
+            <button type="button" id="btn-tema" class="btn-header btn-tema" aria-label="Cambiar entre modo claro y oscuro" title="Cambiar modo">
+                <img class="icono-luna" src="../assets/icons/icon-moon.webp" alt="" width="20" height="20">
+                <img class="icono-sol" src="../assets/icons/icon-sun.webp" alt="" width="20" height="20">
+            </button>
         </nav>
         
-        <button type="button" id="btn-menu" class="btn-header btn-menu" aria-label="Abrir menú">☰ Menú</button>
+        <button type="button" id="btn-menu" class="btn-header btn-menu" aria-controls="menu" aria-expanded="false"><span aria-hidden="true">☰</span> Menú</button>
 
         <nav id="menu" aria-label="Categorías y ofertas">
             <a href="../index.html">
@@ -82,14 +90,20 @@
     </header>
 
     <main>
-        <h2 class="titulo-pagina">Minecraft</h2>
-
+        <h1 class="titulo-pagina">Minecraft</h1>
+        
         <section class="tarjeta detalle">
             <img src="../assets/img/minecraft.jpg" alt="Portada de Minecraft" width="400" height="200">
 
             <div class="detalle__info">
-                <p class="precio precio--destacado">$800.00</p>
-                <button type="button" class="boton">Añadir al carrito</button>
+                <h2>Minecraft</h2>
+
+                <p class="precio precio--destacado">$800.00 <span class="moneda">MXN</span></p>
+
+                <button type="button" class="boton">
+                    <img src="../assets/icons/icon-cart.webp" alt="" width="18" height="18">
+                    Añadir al carrito
+                </button>
 
                 <ul class="etiquetas">
                     <li><a href="category.html">Casual</a></li>
@@ -101,7 +115,11 @@
 
         <section class="tarjeta">
             <h2>Descripción</h2>
-            <p>Juego de mundo abierto tipo sandbox en el que puedes explorar, construir y sobrevivir en un mundo hecho de bloques generado de forma procedural.</p>
+            <p>¡Explora tus propios mundos únicos, sobrevive a la noche y crea todo lo que puedas imaginar!
+                Construye extensos asentamientos o una sencilla choza de tierra. ¡Tienes el mundo en tus manos para darle forma!
+                Recorre impresionantes paisajes y descubre los misterios que aguardan más allá del horizonte.
+                Intenta sobrevivir a la noche o enfréntate a enemigos desafiantes en dimensiones peligrosas.
+                ¡Embárcate en una aventura compartida! Juega con amigos en persona o bien entre plataformas.</p>
         </section>
 
         <section class="tarjeta">
@@ -118,17 +136,34 @@
         <section class="tarjeta">
             <h2>Ficha técnica</h2>
 
-            <ul class="ficha">
+            <ul class="ficha ficha--cuadricula">
                 <li><strong>Desarrollador:</strong> Mojang Studios</li>
                 <li><strong>Sistemas operativos:</strong> Windows, macOS, Linux</li>
-                <li><strong>Modo de juego:</strong> Un jugador y multijugador</li>
+                <li><strong>Modo de juego:</strong> Un jugador, multijugador</li>
+                <li><strong>Fecha de lanzamiento:</strong> 01/01/2009</li>
             </ul>
         </section>
     </main>
-
+    
     <footer>
-        <p>Versión <strong>1.0.0</strong></p>
-        <p>(C) 2026 GameZone. Todos los derechos reservados.</p>
+        <div class="footer__contenido">
+            <a class="footer__logo" href="../index.html">
+                <img src="../assets/img/logo.webp" alt="GameZone" width="160" height="40">
+            </a>
+
+            <nav aria-label="Enlaces del pie de página">
+                <a href="../index.html">Inicio</a>
+                <a href="../pages/categories.html">Categorías</a>
+                <a href="../pages/sales.html">Ofertas</a>
+                <a href="../pages/cart.html">Carrito</a>
+                <a href="../pages/profile.html">Perfil</a>
+            </nav>
+        </div>
+
+        <div class="footer__legal">
+            <p>(C) 2026 GameZone. Todos los derechos reservados.</p>
+            <p>Versión <strong>1.0.0</strong></p>
+        </div>
     </footer>
     
     <script type="module" src="../js/script.js"></script>

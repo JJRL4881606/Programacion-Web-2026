@@ -6,6 +6,7 @@ const menu = document.querySelector("#menu");
 
 btnMenu.addEventListener("click", () => {
     menu.classList.toggle("abierto");
+    btnMenu.setAttribute("aria-expanded", String(menu.classList.contains("abierto")));
 });
 
 // 2. modo claro / oscuro

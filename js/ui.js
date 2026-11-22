@@ -21,14 +21,15 @@ function crearTarjeta(juego, esFavorito) {
 
     clon.querySelector(".juego").dataset.id = juego.id;
 
+    const enlace = clon.querySelector(".juego__enlace");
+    enlace.href = `pages/game.html?id=${juego.id}`;
+
     const imagen = clon.querySelector(".juego__imagen");
     imagen.src = juego.imagen;
     imagen.alt = juego.nombre;
 
     clon.querySelector("h3").textContent = juego.nombre;
     clon.querySelector(".precio strong").textContent = `$${juego.precio.toFixed(2)}`;
-
-    clon.querySelector(".boton").setAttribute("aria-label", `Ver detalles de ${juego.nombre}`);
 
     const corazon = clon.querySelector(".favorito");
     corazon.setAttribute("aria-label", `Favorito: ${juego.nombre}`);

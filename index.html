@@ -33,12 +33,13 @@
 </head>
 
 <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
     <header>
-        <h1 class="logo">
+        <div class="logo">
             <a href="index.html">
                 <img src="assets/img/logo.webp" alt="GameZone" width="320" height="80">
             </a>
-        </h1>
+        </div>
 
         <form role="search" action="pages/search.html" method="get">
             <input type="search" id="buscar" name="buscar" placeholder="Buscar juegos" aria-label="Buscar juegos">
@@ -48,6 +49,11 @@
         </form>
 
         <nav aria-label="Cuenta y compras">
+            <a href="pages/favorites.html">
+                <span aria-hidden="true">♥</span>
+                Favoritos
+            </a>
+
             <a href="pages/cart.html">
                 <img src="assets/icons/icon-cart.webp" alt="" width="20" height="20">
                 Carrito
@@ -58,13 +64,16 @@
                 Perfil
             </a>
 
-            <button type="button" id="btn-tema" class="btn-header">Cambiar modo</button>
+            <button type="button" id="btn-tema" class="btn-header btn-tema" aria-label="Cambiar entre modo claro y oscuro" title="Cambiar modo">
+                <img class="icono-luna" src="assets/icons/icon-moon.webp" alt="" width="20" height="20">
+                <img class="icono-sol" src="assets/icons/icon-sun.webp" alt="" width="20" height="20">
+            </button>
         </nav>
         
-        <button type="button" id="btn-menu" class="btn-header btn-menu" aria-label="Abrir menú">☰ Menú</button>
+        <button type="button" id="btn-menu" class="btn-header btn-menu" aria-controls="menu" aria-expanded="false"><span aria-hidden="true">☰</span> Menú</button>
 
         <nav id="menu" aria-label="Categorías y ofertas">
-            <a href="index.html">
+            <a href="index.html" aria-current="page">
                 <img src="assets/icons/icon-home.webp" alt="" width="20" height="20">
                 Inicio
             </a>
@@ -81,9 +90,13 @@
         </nav>
     </header>
 
-    <main>
+    <main id="contenido">
+        <h1 class="solo-lectores">GameZone: tienda de videojuegos digitales</h1>
+
         <section>
             <article class="destacado">
+                <span class="destacado__etiqueta">Destacado</span>
+
                 <div class="destacado__cuerpo">
                     <img class="destacado__imagen" src="assets/img/minecraft.jpg" alt="Minecraft-IMG-Principal" width="500" height="250">
 
@@ -120,23 +133,40 @@
     </main>
 
     <footer>
-        <p>Versión <strong>1.0.0</strong></p>
-        <p>(C) 2026 GameZone. Todos los derechos reservados.</p>
+        <div class="footer__contenido">
+            <a class="footer__logo" href="index.html">
+                <img src="assets/img/logo.webp" alt="GameZone" width="160" height="40">
+            </a>
+
+            <nav aria-label="Enlaces del pie de página">
+                <a href="index.html">Inicio</a>
+                <a href="pages/categories.html">Categorías</a>
+                <a href="pages/sales.html">Ofertas</a>
+                <a href="pages/cart.html">Carrito</a>
+                <a href="pages/profile.html">Perfil</a>
+            </nav>
+        </div>
+
+        <div class="footer__legal">
+            <p>(C) 2026 GameZone. Todos los derechos reservados.</p>
+            <p>Versión <strong>1.0.0</strong></p>
+        </div>
     </footer>
 
     <template id="tpl-juego">
         <article class="juego">
-            <img class="juego__imagen" alt="" width="300" height="300" loading="lazy">
+            <a class="juego__enlace" href="pages/game.html">
+                <img class="juego__imagen" alt="" width="300" height="300" loading="lazy">
 
-            <div class="juego__info">
-                <h3></h3>
-                <p class="precio"><strong></strong></p>
-
-                <div class="juego__acciones">
-                    <a class="boton" href="pages/game.html">Ver detalles</a>
-                    <button type="button" class="favorito" data-accion="favorito" aria-pressed="false">♡</button>
+                <div class="juego__info">
+                    <h3></h3>
+                    <p class="precio"><strong></strong></p>
                 </div>
-            </div>
+            </a>
+
+            <button type="button" class="favorito" data-accion="favorito" aria-label="Añadir a favoritos" aria-pressed="false">
+                ♡
+            </button>
         </article>
     </template>
 
