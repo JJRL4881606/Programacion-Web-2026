@@ -1,4 +1,3 @@
-
 // Importar funciones de validación
 import {
     validarNombre,
@@ -19,7 +18,7 @@ import {
 // Obtener el formulario
 const formulario = document.getElementById("formRegistro");
 
-// Dirección de la API
+// direccion de la api
 const API_URL = "../api/usuarios.php";
 
 // Mensaje general del registro
@@ -88,7 +87,6 @@ formulario.addEventListener("submit", async function(event) {
 
     // Preparar los datos para enviar a PHP
     const nuevoUsuario = {
-
         nombre: nombre,
         correo: correo,
         nacimiento: nacimiento,
@@ -97,11 +95,9 @@ formulario.addEventListener("submit", async function(event) {
         password: password,
         password_confirmar: confirmar,
         terminos: terminos
-
     };
 
     try {
-
         // Enviar los datos a la API
         const respuesta = await fetch(API_URL, {
 
@@ -115,16 +111,18 @@ formulario.addEventListener("submit", async function(event) {
 
         });
 
-        // Convertir respuesta a JSON
+        // Convertir respuesta a json
         const resultado = await respuesta.json();
 
-        // Comprobar si ocurrió un error
+        // La API respondió con un error
         if (!respuesta.ok) {
+            // 4xx: la API explica qué pasó. 5xx: mensaje general
+            mensaje.textContent = respuesta.status >= 500
+                ? "Algo salió mal de nuestro lado. Inténtalo de nuevo en un momento."
+                : resultado.error || "No pudimos completar el registro.";
 
-            throw new Error(
-                resultado.error || "Error al registrar el usuario"
-            );
-
+            mensaje.style.color = "red";
+            return;
         }
 
         // Mostrar mensaje de éxito
@@ -132,21 +130,16 @@ formulario.addEventListener("submit", async function(event) {
 
         mensaje.style.color = "green";
 
-        // Mostrar información en consola
-        console.log("Registro exitoso:", resultado.usuario);
-
         // Limpiar formulario
         formulario.reset();
 
     } catch (error) {
-
-        // Mostrar error de la API
-        mensaje.textContent = error.message;
-
-        mensaje.style.color = "red";
-
+        // Fallo inesperado (sin conexión, respuesta que no es JSON...)
+        // El detalle técnico va a la consola, y el usuario ve un mensaje amigable
         console.error("Error en el registro:", error);
 
-    }
+        mensaje.textContent = "No pudimos completar el registro. Inténtalo de nuevo más tarde.";
 
+        mensaje.style.color = "red";
+    }
 });

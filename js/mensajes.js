@@ -1,4 +1,3 @@
-
 // Funciones para mostrar y limpiar mensajes de error
 
 export function mostrarError(id, mensaje) {

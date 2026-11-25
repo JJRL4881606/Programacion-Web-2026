@@ -1,0 +1,84 @@
+@host = http://localhost:8000
+
+### Listar usuarios (espera 200)
+GET {{host}}/api/usuarios.php
+
+### Crear usuario (espera 201)
+POST {{host}}/api/usuarios.php
+Content-Type: application/json
+
+{
+  "nombre": "Carlos Ramírez",
+  "correo": "carlos@gmail.com",
+  "nacimiento": "2000-05-15",
+  "pais": "MX",
+  "sistema_operativo": "Windows",
+  "password": "12345678",
+  "password_confirmar": "12345678",
+  "terminos": true
+}
+
+### Crear con el mismo correo (espera 409)
+POST {{host}}/api/usuarios.php
+Content-Type: application/json
+
+{
+  "nombre": "Otro Carlos",
+  "correo": "carlos@gmail.com",
+  "nacimiento": "2000-05-15",
+  "pais": "MX",
+  "sistema_operativo": "Windows",
+  "password": "12345678",
+  "password_confirmar": "12345678",
+  "terminos": true
+}
+
+### Crear con datos inválidos (espera 422)
+POST {{host}}/api/usuarios.php
+Content-Type: application/json
+
+{
+  "nombre": "Al",
+  "correo": "no-es-un-correo",
+  "nacimiento": "2000-05-15",
+  "password": "123",
+  "password_confirmar": "123",
+  "terminos": true
+}
+
+### Obtener un usuario (espera 200)
+GET {{host}}/api/usuarios.php?id=1
+
+### Obtener un usuario que no existe (espera 404)
+GET {{host}}/api/usuarios.php?id=999
+
+### Actualizar usuario (espera 200)
+PUT {{host}}/api/usuarios.php?id=1
+Content-Type: application/json
+
+{
+  "nombre": "Carlos Ramírez López",
+  "correo": "carlos@gmail.com",
+  "nacimiento": "2000-05-15",
+  "pais": "MX",
+  "sistema_operativo": "Linux"
+}
+
+### Actualizar un usuario que no existe (espera 404)
+PUT {{host}}/api/usuarios.php?id=999
+Content-Type: application/json
+
+{
+  "nombre": "Nadie Existe",
+  "correo": "nadie@gmail.com",
+  "nacimiento": "2000-05-15"
+}
+
+### Eliminar usuario (espera 204)
+DELETE {{host}}/api/usuarios.php?id=1
+
+### Eliminar un usuario que no existe (espera 404)
+DELETE {{host}}/api/usuarios.php?id=999
+
+### Método no permitido (espera 405)
+PATCH {{host}}/api/usuarios.php?id=1

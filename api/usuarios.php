@@ -1,139 +1,30 @@
-
 <?php
 
 require_once "helpers.php";
+require_once "db.php";
 
-// Rutas de los archivos
-$archivoInicial = __DIR__ . "/data/usuarios.php";
-$archivoJson = __DIR__ . "/data/usuarios.json";
+// Valida los datos que comparten el registro (POST) y la edición (PUT)
+// Si algo está mal responde 422; si todo está bien devuelve los datos limpios
+function validarUsuario(array $d): array
+{
+    $nombre = trim($d["nombre"] ?? "");
+    $correo = trim($d["correo"] ?? "");
+    $nacimiento = trim($d["nacimiento"] ?? "");
+    $pais = trim($d["pais"] ?? "");
+    $sistema = trim($d["sistema_operativo"] ?? "");
 
-// Cargar usuarios iniciales
-$usuariosIniciales = require $archivoInicial;
-
-// Leer usuarios registrados
-$contenido = file_get_contents($archivoJson);
-
-$usuariosNuevos = json_decode($contenido, true);
-
-if (!is_array($usuariosNuevos)) {
-    $usuariosNuevos = [];
-}
-
-// Combinar los usuarios
-$usuarios = array_merge(
-    $usuariosIniciales,
-    $usuariosNuevos
-);
-
-// Método HTTP recibido
-$metodo = $_SERVER["REQUEST_METHOD"];
-
-
-// ======================================
-// GET: Consultar usuarios
-// ======================================
-
-if ($metodo === "GET") {
-
-    // Consultar usuario por ID
-    if (isset($_GET["id"])) {
-
-        $id = filter_var($_GET["id"], FILTER_VALIDATE_INT);
-
-        if ($id === false || $id === null || $id <= 0) {
-            responder(404, [
-                "error" => "El usuario no existe"
-            ]);
-        }
-
-        foreach ($usuarios as $usuario) {
-
-            if ($usuario["id"] == $id) {
-
-                unset($usuario["password"]);
-
-                responder(200, $usuario);
-            }
-        }
-
-        responder(404, [
-            "error" => "El usuario no existe"
-        ]);
+    if ($nombre === "" || $correo === "" || $nacimiento === "") {
+        responder(422, ["error" => "Completa todos los campos obligatorios"]);
     }
 
-    // Devolver todos los usuarios
-    // Ocultar contraseñas de todos los usuarios
-    foreach ($usuarios as &$usuario) {
-        unset($usuario["password"]);
+    if (strlen($nombre) < 3 || strlen($nombre) > 50) {
+        responder(422, ["error" => "El nombre debe tener entre 3 y 50 caracteres"]);
     }
 
-    unset($usuario);
-
-    responder(200, $usuarios);
-}
-
-
-// ======================================
-// POST: Registrar usuario
-// ======================================
-
-if ($metodo === "POST") {
-
-    // Recibir JSON
-    $datos = json_decode(
-        file_get_contents("php://input"),
-        true
-    );
-
-    if (!is_array($datos)) {
-        responder(422, [
-            "error" => "Los datos enviados no son JSON válido"
-        ]);
+    if (!filter_var($correo, FILTER_VALIDATE_EMAIL) || strlen($correo) > 100) {
+        responder(422, ["error" => "El correo electrónico no es válido"]);
     }
 
-    // Obtener campos
-    $nombre = trim($datos["nombre"] ?? "");
-    $correo = trim($datos["correo"] ?? "");
-    $nacimiento = trim($datos["nacimiento"] ?? "");
-    $pais = trim($datos["pais"] ?? "");
-    $sistema = trim($datos["sistema_operativo"] ?? "");
-
-    $password = $datos["password"] ?? "";
-    $confirmar = $datos["password_confirmar"] ?? "";
-    $terminos = $datos["terminos"] ?? false;
-
-
-    // VALIDACIÓN 1: Campos obligatorios
-    if (
-        $nombre === "" ||
-        $correo === "" ||
-        $nacimiento === "" ||
-        $password === "" ||
-        $confirmar === ""
-    ) {
-        responder(422, [
-            "error" => "Completa todos los campos obligatorios"
-        ]);
-    }
-
-
-    // VALIDACIÓN 2: Nombre mínimo de 3 caracteres
-    if (strlen($nombre) < 3) {
-        responder(422, [
-            "error" => "El nombre debe tener al menos 3 caracteres"
-        ]);
-    }
-
-
-    // VALIDACIÓN 3: Correo válido
-    if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-        responder(422, [
-            "error" => "El correo electrónico no es válido"
-        ]);
-    }
-
-
-    // VALIDACIÓN 4: Fecha válida
     $fecha = DateTime::createFromFormat("!Y-m-d", $nacimiento);
 
     if (
@@ -141,108 +32,215 @@ if ($metodo === "POST") {
         $fecha->format("Y-m-d") !== $nacimiento ||
         $fecha > new DateTime("today")
     ) {
-        responder(422, [
-            "error" => "La fecha de nacimiento no es válida"
-        ]);
+        responder(422, ["error" => "La fecha de nacimiento no es válida"]);
     }
 
-
-    // VALIDACIÓN 5: Contraseña
-    if (strlen($password) < 8) {
-        responder(422, [
-            "error" => "La contraseña debe tener al menos 8 caracteres"
-        ]);
+    // la columna pais es CHAR(2)
+    if ($pais !== "" && strlen($pais) !== 2) {
+        responder(422, ["error" => "El país no es válido"]);
     }
 
-
-    // VALIDACIÓN 6: Confirmar contraseña
-    if ($password !== $confirmar) {
-        responder(422, [
-            "error" => "Las contraseñas no coinciden"
-        ]);
+    // la columna sistema_operativo es VARCHAR(30)
+    if (strlen($sistema) > 30) {
+        responder(422, ["error" => "El sistema operativo es demasiado largo"]);
     }
 
-
-    // VALIDACIÓN 7: Aceptar términos
-    if ($terminos !== true) {
-        responder(422, [
-            "error" => "Debes aceptar los términos y condiciones"
-        ]);
-    }
-
-
-    // VALIDACIÓN 8: Correo duplicado
-    foreach ($usuarios as $usuario) {
-
-        if (strtolower($usuario["correo"]) === strtolower($correo)) {
-
-            responder(422, [
-                "error" => "Este correo electrónico ya está registrado"
-            ]);
-        }
-    }
-
-
-    // ======================================
-    // Crear nuevo usuario
-    // ======================================
-
-    // Buscar el último ID
-    $ultimoId = 0;
-
-    foreach ($usuarios as $usuario) {
-        $ultimoId = max($ultimoId, (int)$usuario["id"]);
-    }
-
-    // Crear registro
-    $nuevoUsuario = [
-        "id" => $ultimoId + 1,
-        "nombre" => $nombre,
-        "correo" => $correo,
-        "nacimiento" => $nacimiento,
-        "pais" => $pais,
-        "sistema_operativo" => $sistema,
-        "password" => password_hash($password, PASSWORD_DEFAULT)
+    return [
+        $nombre,
+        $correo,
+        $nacimiento,
+        $pais !== "" ? $pais : null,
+        $sistema !== "" ? $sistema : null,
     ];
-
-
-    // Guardar en JSON
-    $usuariosNuevos[] = $nuevoUsuario;
-
-    $resultado = file_put_contents(
-        $archivoJson,
-        json_encode(
-            $usuariosNuevos,
-            JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
-        ),
-        LOCK_EX
-    );
-
-    if ($resultado === false) {
-        responder(500, [
-            "error" => "No se pudo guardar el usuario"
-        ]);
-    }
-
-
-    // Respuesta exitosa
-    // Nunca devolver la contraseña
-    unset($nuevoUsuario["password"]);
-
-    responder(201, [
-        "mensaje" => "Usuario registrado correctamente",
-        "usuario" => $nuevoUsuario
-    ]);
 }
 
+$metodo = $_SERVER["REQUEST_METHOD"];
+$id = isset($_GET["id"]) ? (int) $_GET["id"] : null;
 
-// ======================================
-// Método no permitido
-// ======================================
+try {
+    $pdo = conectar();
 
-header("Allow: GET, POST");
+    switch ($metodo) {
 
-responder(405, [
-    "error" => "Método HTTP no permitido"
-]);
+        // ======================================
+        // GET: leer usuarios (SELECT)
+        // ======================================
+        case "GET":
 
+            // un usuario
+            if ($id !== null) {
+                $stmt = $pdo->prepare(
+                    "SELECT id, username AS nombre, email AS correo,
+                            nacimiento, pais, sistema_operativo
+                     FROM users
+                     WHERE id = :id"
+                );
+                $stmt->execute(["id" => $id]);
+                $usuario = $stmt->fetch();
+
+                if (!$usuario) {
+                    responder(404, ["error" => "El usuario no existe"]);
+                }
+                responder(200, $usuario);
+            }
+
+            // todos los usuarios
+            $stmt = $pdo->prepare(
+                "SELECT id, username AS nombre, email AS correo,
+                        nacimiento, pais, sistema_operativo
+                 FROM users
+                 ORDER BY id"
+            );
+            $stmt->execute();
+            responder(200, $stmt->fetchAll());
+
+
+        // ======================================
+        // POST: registrar usuario (INSERT)
+        // ======================================
+        case "POST":
+            $datos = leerJson();
+            [$nombre, $correo, $nacimiento, $pais, $sistema] = validarUsuario($datos);
+
+            $password = $datos["password"] ?? "";
+            $confirmar = $datos["password_confirmar"] ?? "";
+            $terminos = $datos["terminos"] ?? false;
+
+            if ($password === "" || $confirmar === "") {
+                responder(422, ["error" => "Completa todos los campos obligatorios"]);
+            }
+
+            if (strlen($password) < 8) {
+                responder(422, ["error" => "La contraseña debe tener al menos 8 caracteres"]);
+            }
+
+            if ($password !== $confirmar) {
+                responder(422, ["error" => "Las contraseñas no coinciden"]);
+            }
+
+            if ($terminos !== true) {
+                responder(422, ["error" => "Debes aceptar los términos y condiciones"]);
+            }
+
+            try {
+                $stmt = $pdo->prepare(
+                    "INSERT INTO users (username, email, password_hash, nacimiento, pais, sistema_operativo)
+                     VALUES (:nombre, :correo, :password, :nacimiento, :pais, :sistema)"
+                );
+                $stmt->execute([
+                    "nombre" => $nombre,
+                    "correo" => $correo,
+                    "password" => password_hash($password, PASSWORD_DEFAULT),
+                    "nacimiento" => $nacimiento,
+                    "pais" => $pais,
+                    "sistema" => $sistema,
+                ]);
+            } catch (PDOException $e) {
+                if ($e->getCode() === "23000") {   // correo o nombre duplicado (UNIQUE)
+                    responder(409, ["error" => "Ya existe un usuario con ese correo o ese nombre"]);
+                }
+                throw $e;
+            }
+
+            // nunca se devuelve la contraseña
+            responder(201, [
+                "mensaje" => "Usuario registrado correctamente",
+                "usuario" => [
+                    "id" => (int) $pdo->lastInsertId(),
+                    "nombre" => $nombre,
+                    "correo" => $correo,
+                    "nacimiento" => $nacimiento,
+                    "pais" => $pais,
+                    "sistema_operativo" => $sistema,
+                ],
+            ]);
+
+
+        // ======================================
+        // PUT: actualizar usuario (UPDATE)
+        // ======================================
+        case "PUT":
+            if ($id === null) {
+                responder(400, ["error" => "Falta el id"]);
+            }
+
+            [$nombre, $correo, $nacimiento, $pais, $sistema] = validarUsuario(leerJson());
+
+            // se verifica que exista antes de actualizar
+            $existe = $pdo->prepare("SELECT id FROM users WHERE id = :id");
+            $existe->execute(["id" => $id]);
+
+            if (!$existe->fetch()) {
+                responder(404, ["error" => "El usuario no existe"]);
+            }
+
+            try {
+                $stmt = $pdo->prepare(
+                    "UPDATE users
+                     SET username = :nombre, email = :correo, nacimiento = :nacimiento,
+                         pais = :pais, sistema_operativo = :sistema
+                     WHERE id = :id"
+                );
+                $stmt->execute([
+                    "nombre" => $nombre,
+                    "correo" => $correo,
+                    "nacimiento" => $nacimiento,
+                    "pais" => $pais,
+                    "sistema" => $sistema,
+                    "id" => $id,
+                ]);
+            } catch (PDOException $e) {
+                if ($e->getCode() === "23000") {
+                    responder(409, ["error" => "Ya existe un usuario con ese correo o ese nombre"]);
+                }
+                throw $e;
+            }
+
+            responder(200, [
+                "id" => $id,
+                "nombre" => $nombre,
+                "correo" => $correo,
+                "nacimiento" => $nacimiento,
+                "pais" => $pais,
+                "sistema_operativo" => $sistema,
+            ]);
+
+
+        // ======================================
+        // DELETE: eliminar usuario (DELETE)
+        // ======================================
+        case "DELETE":
+            if ($id === null) {
+                responder(400, ["error" => "Falta el id"]);
+            }
+
+            try {
+                $stmt = $pdo->prepare("DELETE FROM users WHERE id = :id");
+                $stmt->execute(["id" => $id]);
+            } catch (PDOException $e) {
+                if ($e->getCode() === "23000") {   // llave foránea: tiene pedidos
+                    responder(409, ["error" => "El usuario tiene pedidos y no se puede eliminar"]);
+                }
+                throw $e;
+            }
+
+            if ($stmt->rowCount() === 0) {
+                responder(404, ["error" => "El usuario no existe"]);
+            }
+
+            http_response_code(204);   // éxito sin cuerpo
+            exit;
+
+
+        // ======================================
+        // Método no permitido
+        // ======================================
+        default:
+            header("Allow: GET, POST, PUT, DELETE");
+            responder(405, ["error" => "Método HTTP no permitido"]);
+    }
+
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    responder(500, ["error" => "Error interno del servidor"]);
+}

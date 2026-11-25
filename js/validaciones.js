@@ -1,4 +1,3 @@
-
 // Validaciones del formulario de registro
 
 export function validarNombre(nombre) {
